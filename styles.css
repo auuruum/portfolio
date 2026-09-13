@@ -1033,6 +1033,18 @@ main {
   border-top: 1px solid var(--stroke);
 }
 
+.inline-link {
+  color: var(--accent-a);
+  text-decoration: underline;
+  text-decoration-color: rgba(137, 170, 204, 0.52);
+  text-underline-offset: 4px;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.inline-link:hover {
+  color: var(--text);
+  text-decoration-color: var(--text);
+}
 .section-note {
   max-width: 430px;
   margin: 0;

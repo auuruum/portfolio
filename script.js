@@ -95,3 +95,57 @@ async function loadDownloadStats() {
 }
 
 loadDownloadStats();
+
+const lightbox = document.querySelector("#lightbox");
+const lightboxImage = document.querySelector("#lightbox-image");
+const lightboxCaption = document.querySelector("#lightbox-caption");
+const lightboxCounter = document.querySelector("#lightbox-counter");
+const lightboxClose = document.querySelector("#lightbox-close");
+const lightboxPrev = document.querySelector("#lightbox-prev");
+const lightboxNext = document.querySelector("#lightbox-next");
+const lightboxItems = [...document.querySelectorAll("[data-lightbox='bebraland']")];
+let lightboxIndex = 0;
+
+function showLightbox(index) {
+  if (!lightbox || !lightboxItems.length) return;
+
+  lightboxIndex = (index + lightboxItems.length) % lightboxItems.length;
+  const item = lightboxItems[lightboxIndex];
+  const image = item.querySelector("img");
+
+  lightboxImage.src = image.getAttribute("src");
+  lightboxImage.alt = image.alt;
+  lightboxCaption.textContent = item.querySelector("span")?.textContent || "";
+  lightboxCounter.textContent = (lightboxIndex + 1) + " / " + lightboxItems.length;
+
+  if (!lightbox.open) {
+    if (typeof lightbox.showModal === "function") {
+      lightbox.showModal();
+    } else {
+      lightbox.setAttribute("open", "");
+    }
+  }
+
+  lightboxClose.focus();
+}
+
+lightboxItems.forEach((item, index) => {
+  item.addEventListener("click", (event) => {
+    event.preventDefault();
+    showLightbox(index);
+  });
+});
+
+lightboxClose?.addEventListener("click", () => lightbox.close());
+lightboxPrev?.addEventListener("click", () => showLightbox(lightboxIndex - 1));
+lightboxNext?.addEventListener("click", () => showLightbox(lightboxIndex + 1));
+
+lightbox?.addEventListener("click", (event) => {
+  if (event.target === lightbox) lightbox.close();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (!lightbox?.open) return;
+  if (event.key === "ArrowLeft") showLightbox(lightboxIndex - 1);
+  if (event.key === "ArrowRight") showLightbox(lightboxIndex + 1);
+});

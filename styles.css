@@ -1348,6 +1348,90 @@ main {
     grid-template-columns: 1fr;
   }
 }
+.project-groups {
+  display: grid;
+  gap: 78px;
+}
+
+.project-group {
+  padding-top: 46px;
+  border-top: 1px solid var(--stroke);
+}
+
+.project-group:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.project-group--bebraland {
+  border-top-color: rgba(67, 212, 125, 0.42);
+}
+
+.project-group--cs2 {
+  border-top-color: rgba(137, 170, 204, 0.42);
+}
+
+.project-group-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 24px;
+}
+
+.project-group-head h3 {
+  margin: 0;
+  font-size: clamp(1.9rem, 4vw, 3.5rem);
+  line-height: 0.98;
+}
+
+.project-group-head .eyebrow {
+  margin-bottom: 10px;
+  color: var(--muted);
+}
+
+.project-group-head .section-note {
+  max-width: 480px;
+  margin: 0;
+}
+
+.project-group--bebraland .project-group-head .eyebrow {
+  color: #43d47d;
+}
+
+.project-group--cs2 .project-group-head .eyebrow {
+  color: #89aacc;
+}
+
+.project-group .bento-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.project-group--minecraft .project-card,
+.project-group--weather .project-card {
+  grid-column: span 6;
+}
+
+.project-group--bebraland .project-card,
+.project-group--cs2 .project-card {
+  grid-column: span 4;
+}
+
+@media (max-width: 880px) {
+  .project-group-head {
+    display: grid;
+    align-items: start;
+    gap: 12px;
+  }
+
+  .project-group .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-group .project-card {
+    grid-column: auto;
+  }
+}
 .lightbox {
   width: min(1180px, calc(100% - 32px));
   max-width: none;

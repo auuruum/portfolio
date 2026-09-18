@@ -301,10 +301,12 @@ em {
 
 .button,
 .text-link {
+  font: inherit;
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   min-height: 48px;
   padding: 0 24px;
   border: 1px solid var(--stroke);
@@ -825,6 +827,28 @@ main {
   margin-bottom: 28px;
 }
 
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.contact-email {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+#copy-status {
+  color: var(--text);
+  font-weight: 700;
+}
+
 .socials {
   display: flex;
   flex-wrap: wrap;
@@ -961,6 +985,7 @@ main {
   }
 
   .hero-actions,
+  .contact-actions,
   .button {
     width: 100%;
   }

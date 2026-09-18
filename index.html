@@ -34,7 +34,7 @@
         <a href="#work">Work</a>
         <a href="#stack">Stack</a>
         <span class="nav-divider"></span>
-        <a class="say-hi" href="mailto:aurimasdovgialo@gmail.com">Say hi <span>-></span></a>
+        <a class="say-hi" href="#contact">Say hi <span>-></span></a>
       </nav>
     </header>
 
@@ -446,7 +446,21 @@
         <div class="contact-inner">
           <p class="eyebrow">Contact</p>
           <h2>Want to see more?</h2>
-          <a class="button primary" href="mailto:aurimasdovgialo@gmail.com">Email me</a>
+          <div class="contact-actions">
+            <button class="button primary" id="copy-email" type="button">Copy email</button>
+            <a
+              class="button ghost"
+              href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=aurimasdovgialo@gmail.com"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Open Gmail
+            </a>
+          </div>
+          <p class="contact-email">
+            <span>aurimasdovgialo@gmail.com</span>
+            <span id="copy-status" aria-live="polite"></span>
+          </p>
           <div class="socials">
             <a href="https://auuruum.github.io/" target="_blank">Linktree</a>
             <a href="https://github.com/auuruum" target="_blank">GitHub</a>

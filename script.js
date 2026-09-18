@@ -96,6 +96,23 @@ async function loadDownloadStats() {
 
 loadDownloadStats();
 
+const copyEmailButton = document.querySelector("#copy-email");
+const copyStatus = document.querySelector("#copy-status");
+const emailAddress = "aurimasdovgialo@gmail.com";
+
+copyEmailButton?.addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(emailAddress);
+    copyStatus.textContent = "Copied";
+  } catch {
+    copyStatus.textContent = "Select the email above to copy it";
+  }
+
+  window.setTimeout(() => {
+    copyStatus.textContent = "";
+  }, 2400);
+});
+
 const lightbox = document.querySelector("#lightbox");
 const lightboxImage = document.querySelector("#lightbox-image");
 const lightboxCaption = document.querySelector("#lightbox-caption");

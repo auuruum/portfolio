@@ -247,6 +247,33 @@ h2 em,
   backdrop-filter: blur(12px);
 }
 
+/* Lucide service icons share one optical size and stroke treatment. */
+.capability-symbol,
+.capability-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.5em;
+  transition: color 180ms ease;
+}
+.capability-symbol {
+  width: 20px;
+}
+.capability-arrow {
+  width: 12px;
+}
+.capability-symbol svg,
+.capability-arrow svg {
+  display: block;
+  flex-shrink: 0;
+}
+.capability-list > a:is(:hover, :focus-visible) .capability-symbol {
+  color: var(--accent-a);
+}
+.capability-list > a:is(:hover, :focus-visible) .capability-arrow {
+  color: var(--text);
+}
+
 @media (max-width: 360px) {
   .navigation {
     gap: 6px;

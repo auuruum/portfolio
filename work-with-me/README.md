@@ -22,8 +22,14 @@ Confirm the preferred client contact channel, final copy, available capacity, sc
 
 Check hosting suitability before making this a commercial site; GitHub Pages restricts sites primarily facilitating commercial transactions: https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits
 
-The approved layout is saved in commit `631cd37` on `feat/work-with-me-preview`. Further style refinements remain uncommitted for review.
+The approved layout is saved in commit `631cd37`, and the portfolio styling in `4207908`, on `feat/work-with-me-preview`.
 
 ## Portfolio styling
 
 `portfolio-theme.css` applies Home's colors, font families, button treatments and neutral surfaces after `work.css`. The page structure, columns and responsive layout remain in `work.css`; the theme also tightens the header gap on the narrowest screens so its controls fit.
+
+## Service icons
+
+The six service icons and their arrows are inline SVGs from [Lucide](https://lucide.dev/): `puzzle`, `panels-top-left`, `rocket`, `server`, `bot`, `layers`, and `arrow-up-right`. They use a consistent 24 × 24 viewBox, rounded strokes and `currentColor`; the service icons display at 20 px. They need no JavaScript or external asset requests and are hidden from assistive technology because each link already has a text label.
+
+Source: [Lucide revision 1ef60af](https://github.com/lucide-icons/lucide/tree/1ef60af944de207e0d5176905a0759ba12e6ee8d/icons). The upstream ISC/MIT notices are preserved in `../assets/icons/lucide-LICENSE.txt`.

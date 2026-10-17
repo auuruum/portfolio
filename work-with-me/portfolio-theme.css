@@ -1,0 +1,254 @@
+/* Match Home's visual language while retaining the work.css page layout. */
+:root {
+  --bg: #0a0a0a;
+  --surface: #141414;
+  --text: #f5f5f5;
+  --muted: #8a8a8a;
+  --stroke: rgba(255, 255, 255, 0.11);
+  --accent-a: #89aacc;
+  --accent-b: #4e85bf;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Instrument Serif", Georgia, serif;
+  --line: var(--stroke);
+  --accent: var(--accent-a);
+  --font: var(--font-body);
+  --display: var(--font-display);
+}
+
+::selection {
+  background: rgba(137, 170, 204, 0.3);
+  color: var(--text);
+}
+
+.navigation {
+  background: rgba(20, 20, 20, 0.78);
+  border-color: var(--stroke);
+  backdrop-filter: blur(18px);
+}
+.header.scrolled .navigation {
+  background: rgba(20, 20, 20, 0.92);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+}
+.brand-dot {
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  background-clip: text;
+  color: transparent;
+}
+.nav-links,
+.language-switch button,
+.language-switch > span {
+  color: var(--muted);
+}
+.language-switch button[aria-pressed="true"] {
+  color: var(--text);
+}
+.nav-cta {
+  background: rgba(185, 210, 230, 0.13);
+  color: #d8e7f3;
+}
+.nav-cta:hover {
+  background: rgba(185, 210, 230, 0.22);
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+h1 em {
+  color: var(--text);
+  letter-spacing: -0.045em;
+}
+h2 {
+  font-weight: 650;
+}
+h2 em,
+.contact-copy h2 em,
+.faq-heading h2,
+.message-panel h2 {
+  color: var(--text);
+}
+.eyebrow {
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+.hero-description {
+  color: var(--muted);
+}
+.signal {
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+  box-shadow: 0 0 8px rgba(137, 170, 204, 0.35);
+}
+
+.button {
+  border-radius: 999px;
+  transition: transform 180ms ease, color 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+.button-light {
+  background: var(--text);
+  color: var(--bg);
+}
+.button-light:hover {
+  background: var(--text);
+  border-color: rgba(137, 170, 204, 0.8);
+}
+.button-outline {
+  border-color: var(--stroke);
+  background: rgba(10, 10, 10, 0.62);
+}
+.button-outline:hover {
+  border-color: rgba(137, 170, 204, 0.8);
+  background: var(--surface);
+}
+.quiet-link,
+.hero-note,
+.hero-bottom,
+.scene-coordinate,
+.scene-label,
+.window-bar,
+.window-caption,
+.mini-bar,
+.step-number,
+.step-footnote,
+.agreement-note p,
+.personal-note div > span,
+.direct-contact small,
+.contact-arrow,
+.field-hint,
+.optional,
+.form-note,
+.optional-details summary,
+.footer > span,
+.footer > div,
+.message-intro,
+.message-telegram {
+  color: var(--muted);
+}
+.quiet-link:hover,
+.hero-bottom a:hover,
+.footer a:hover,
+.message-telegram:hover {
+  color: var(--text);
+}
+
+.hero-scene::before {
+  background: radial-gradient(ellipse at 60% 45%, rgba(137, 170, 204, 0.14), transparent 65%);
+}
+.scene-orbit,
+.scene-orbit::before {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+.product-window,
+.case-visual,
+.releases-strip,
+.agreement-note,
+.brief-form,
+.message-dialog {
+  border-color: var(--stroke);
+  background: var(--surface);
+}
+.product-window,
+.case-visual,
+.releases-strip,
+.agreement-note,
+.contact-icon,
+.field input,
+.field textarea,
+.message-preview {
+  border-radius: 8px;
+}
+.product-window {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+.window-bar,
+.tiny-tag,
+.circle-link,
+.contact-icon,
+.close-dialog {
+  border-color: var(--stroke);
+}
+.case-visual::after {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.82));
+}
+.case-tabs {
+  border-color: var(--stroke);
+  border-radius: 999px;
+  background: rgba(20, 20, 20, 0.78);
+}
+.case-tabs button {
+  border-radius: 999px;
+  color: var(--muted);
+}
+.case-tabs button[aria-pressed="true"] {
+  background: var(--text);
+  color: var(--bg);
+}
+.capability-list > a,
+.visual-caption,
+.release-links,
+.field label,
+.faq-list summary {
+  color: rgba(255, 255, 255, 0.78);
+}
+.capability-symbol,
+.capability-arrow,
+.circle-link,
+.contact-icon,
+.faq-list summary > span:last-child,
+.optional-details summary > span:last-child {
+  color: var(--muted);
+}
+.circle-link:hover {
+  background: var(--text);
+  border-color: var(--accent-a);
+  color: var(--bg);
+}
+.avatar-mark {
+  border-color: var(--accent-a);
+  background: var(--bg);
+  color: var(--text);
+}
+.type-options label > span {
+  border-radius: 999px;
+  border-color: var(--stroke);
+  color: var(--muted);
+}
+.type-options input:checked + span {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+.type-options label:hover > span {
+  border-color: rgba(137, 170, 204, 0.8);
+}
+.field input,
+.field textarea,
+.message-preview {
+  border-color: var(--stroke);
+  background: rgba(10, 10, 10, 0.62);
+  color: var(--text);
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--muted);
+}
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--accent-a);
+  outline-color: rgba(137, 170, 204, 0.35);
+}
+.message-dialog {
+  background: rgba(12, 12, 12, 0.96);
+  border-color: rgba(137, 170, 204, 0.42);
+}
+.message-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.84);
+  backdrop-filter: blur(12px);
+}
+
+@media (max-width: 360px) {
+  .navigation {
+    gap: 6px;
+  }
+}

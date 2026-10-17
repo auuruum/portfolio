@@ -22,4 +22,8 @@ Confirm the preferred client contact channel, final copy, available capacity, sc
 
 Check hosting suitability before making this a commercial site; GitHub Pages restricts sites primarily facilitating commercial transactions: https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits
 
-This work is intended to remain uncommitted on `feat/work-with-me-preview` until reviewed by the owner.
+The approved layout is saved in commit `631cd37` on `feat/work-with-me-preview`. Further style refinements remain uncommitted for review.
+
+## Portfolio styling
+
+`portfolio-theme.css` applies Home's colors, font families, button treatments and neutral surfaces after `work.css`. The page structure, columns and responsive layout remain in `work.css`; the theme also tightens the header gap on the narrowest screens so its controls fit.

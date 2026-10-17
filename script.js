@@ -1,11 +1,18 @@
-document.body.classList.add("loading");
-
 const loader = document.querySelector("#loader");
 const loaderCount = document.querySelector("#loader-count");
 const loaderProgress = document.querySelector("#loader-progress");
 const loaderWord = document.querySelector("#loader-word");
 const words = ["Design", "Create", "Ship"];
-let loaderStarted = performance.now();
+const loaderStarted = performance.now();
+let loaderFrame = 0;
+let loaderDelay = 0;
+
+function dismissLoader() {
+  cancelAnimationFrame(loaderFrame);
+  window.clearTimeout(loaderDelay);
+  loader.classList.add("done");
+  document.body.classList.remove("loading");
+}
 
 function animateLoader(now) {
   const elapsed = now - loaderStarted;
@@ -17,17 +24,26 @@ function animateLoader(now) {
   loaderWord.textContent = words[Math.min(words.length - 1, Math.floor(progress * words.length))];
 
   if (progress < 1) {
-    requestAnimationFrame(animateLoader);
+    loaderFrame = requestAnimationFrame(animateLoader);
     return;
   }
 
-  window.setTimeout(() => {
-    loader.classList.add("done");
-    document.body.classList.remove("loading");
-  }, 320);
+  loaderDelay = window.setTimeout(dismissLoader, 320);
 }
 
-requestAnimationFrame(animateLoader);
+if (document.documentElement.classList.contains("intro-seen")) {
+  dismissLoader();
+} else {
+  document.body.classList.add("loading");
+  loaderFrame = requestAnimationFrame(animateLoader);
+}
+
+window.addEventListener("pageshow", (event) => {
+  if (event.persisted) {
+    document.documentElement.classList.add("intro-seen");
+    dismissLoader();
+  }
+});
 
 const header = document.querySelector("#site-header");
 window.addEventListener("scroll", () => {

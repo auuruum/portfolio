@@ -8,6 +8,20 @@
       content="auuruum portfolio: esports infrastructure, Minecraft mods, Arduino hardware, Discord tooling, creative code, and visual experiments."
     />
     <title>auuruum | Portfolio</title>
+    <script>
+      // Decide before the first paint so returning visitors never see the overlay flash.
+      try {
+        const introKey = "auuruum-portfolio-intro-seen";
+        if (sessionStorage.getItem(introKey) === "1") {
+          document.documentElement.classList.add("intro-seen");
+        } else {
+          sessionStorage.setItem(introKey, "1");
+        }
+      } catch {
+        // The intro also works when browser storage is unavailable.
+      }
+    </script>
+    <link rel="preload" as="image" href="assets/cosmos-poster.webp" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -47,7 +61,7 @@
           muted
           loop
           playsinline
-          poster="https://i.ibb.co/twTTY1xW/1920x1080.png"
+          poster="assets/cosmos-poster.webp"
         ></video>
         <div class="hero-overlay"></div>
         <div class="hero-fade"></div>
@@ -439,7 +453,7 @@
           muted
           loop
           playsinline
-          poster="https://i.ibb.co/twTTY1xW/1920x1080.png"
+          poster="assets/cosmos-poster.webp"
         ></video>
         <div class="marquee" aria-hidden="true">
           <span>BUILDING THE FUTURE - BUILDING THE FUTURE - BUILDING THE FUTURE - </span>

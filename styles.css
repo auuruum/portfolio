@@ -57,6 +57,18 @@ video {
   visibility: hidden;
 }
 
+.intro-seen .loader {
+  display: none;
+}
+
+.intro-seen .hero .reveal,
+.intro-seen .hero .name-reveal {
+  animation: none;
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
 .loader-label {
   position: absolute;
   top: 28px;

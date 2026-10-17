@@ -682,7 +682,7 @@ main {
   gap: 12px;
 }
 
-.stack-cloud span {
+.stack-cloud > a {
   --ink: #fff;
   position: relative;
   display: inline-flex;
@@ -705,12 +705,18 @@ main {
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
-.stack-cloud span:hover {
+.stack-cloud > a:hover,
+.stack-cloud > a:focus-visible {
   transform: translateY(-2px);
   border-color: color-mix(in srgb, var(--brand) 82%, #fff 18%);
   box-shadow:
     inset 0 -18px 24px rgba(0, 0, 0, 0.16),
     0 16px 34px color-mix(in srgb, var(--brand) 34%, transparent);
+}
+
+.stack-cloud > a:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 4px;
 }
 
 .stack-cloud img,
@@ -748,7 +754,7 @@ main {
   font-weight: 950;
 }
 
-.stack-cloud span::after {
+.stack-cloud > a::after {
   content: "";
   position: absolute;
   inset: 1px;
@@ -1024,7 +1030,7 @@ main {
     padding: 18px;
   }
 
-  .stack-cloud span {
+  .stack-cloud > a {
     min-height: 44px;
     padding-right: 12px;
     font-size: 0.8rem;

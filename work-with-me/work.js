@@ -18,6 +18,7 @@
     en: {
       ...english,
       pageTitle: "Work with me · auuruum",
+      closeMessage: "Close message",
       emailSubject: "Project inquiry",
       greeting: "Hi Aurimas! I'd like to discuss a project.",
       briefName: "Name / project",
@@ -33,6 +34,7 @@
     },
     lt: {
       "pageTitle": "Dirbkime kartu · auuruum",
+      "closeMessage": "Uždaryti žinutę",
       "skip": "Pereiti prie turinio",
       "navWork": "Darbai",
       "navProcess": "Kaip dirbame",
@@ -117,8 +119,8 @@
       "faqHandoverQuestion": "Kas vyksta po perdavimo?",
       "faqHandoverAnswer": "Prieš pradėdami sutariame dėl perdavimo, pirminio kodo, instrukcijų ir klaidų taisymo laikotarpio. Prieglobą, tolesnę priežiūrą ir naujas funkcijas galime aptarti atskirai.",
       "footerNote": "Pradėk nuo idėjos. Detales išsiaiškinsime kartu.",
-      "footerPortfolio": "Portfolio ↗",
-      "footerLinks": "Visos nuorodos ↗",
+      "footerPortfolio": "Portfolio",
+      "footerLinks": "Visos nuorodos",
       "messageEyebrow": "Taip prasideda pokalbis",
       "messageTitle": "Aprašymas paruoštas.",
       "messageIntro": "Patikrink detales, tada atidaryk el. laiško juodraštį arba nukopijuok tekstą pokalbiui per Telegram. Dar niekas neišsiųsta.",
@@ -140,6 +142,7 @@
     },
     ru: {
       pageTitle: "Работа со мной · auuruum",
+      closeMessage: "Закрыть сообщение",
       skip: "К содержимому",
       navWork: "Мои работы",
       navProcess: "Как работаем",
@@ -224,8 +227,8 @@
       faqHandoverQuestion: "Что будет после сдачи?",
       faqHandoverAnswer: "До начала работы согласуем передачу, исходники, инструкции и период исправления ошибок. Хостинг, дальнейшую поддержку и новые функции можно обсудить отдельно.",
       footerNote: "Начни с идеи. С деталями разберёмся вместе.",
-      footerPortfolio: "Портфолио ↗",
-      footerLinks: "Все ссылки ↗",
+      footerPortfolio: "Портфолио",
+      footerLinks: "Все ссылки",
       messageEyebrow: "С этого начинается разговор",
       messageTitle: "Описание готово.",
       messageIntro: "Проверь детали, затем открой черновик письма или скопируй текст для Telegram. Пока ничего не отправлено.",
@@ -277,6 +280,7 @@
     language = nextLanguage;
     document.documentElement.lang = language;
     document.title = t("pageTitle");
+    document.querySelector("#close-message").setAttribute("aria-label", t("closeMessage"));
     textElements.forEach((element) => { element.textContent = t(element.dataset.i18n); });
     placeholderElements.forEach((element) => { element.placeholder = t(element.dataset.i18nPlaceholder); });
     languageButtons.forEach((button) => { button.setAttribute("aria-pressed", String(button.dataset.language === language)); });

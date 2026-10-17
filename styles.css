@@ -1604,6 +1604,46 @@ main {
 
 
 /* Entry points to the custom-development page. */
+.nav-pill > a:not(.brand-mark) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.button,
+.text-link {
+  gap: 10px;
+}
+.button .icon,
+.text-link .icon,
+.nav-pill .icon,
+.project-links .icon {
+  display: block;
+}
+.platform-logo .brand-icon {
+  width: 62%;
+  height: 62%;
+}
+.stack-logo .icon {
+  --icon-size: 20px;
+  display: block;
+}
+.project-card b {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.flow-arrow .icon {
+  --icon-size: 28px;
+}
+.lightbox-close,
+.lightbox-nav {
+  padding: 0;
+  line-height: 1;
+}
+.lightbox-nav .icon {
+  --icon-size: 22px;
+}
+
 .nav-pill > a.nav-cta {
   background: rgba(185, 210, 230, 0.13);
   color: #d8e7f3;

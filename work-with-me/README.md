@@ -28,8 +28,10 @@ The approved layout is saved in commit `631cd37`, and the portfolio styling in `
 
 `portfolio-theme.css` applies Home's colors, font families, button treatments and neutral surfaces after `work.css`. The page structure, columns and responsive layout remain in `work.css`; the theme also tightens the header gap on the narrowest screens so its controls fit.
 
-## Service icons
+## Icons
 
-The six service icons and their arrows are inline SVGs from [Lucide](https://lucide.dev/): `puzzle`, `panels-top-left`, `rocket`, `server`, `bot`, `layers`, and `arrow-up-right`. They use a consistent 24 × 24 viewBox, rounded strokes and `currentColor`; the service icons display at 20 px. They need no JavaScript or external asset requests and are hidden from assistive technology because each link already has a text label.
+UI icons on both Home and Work with me are inline SVGs from [Lucide](https://lucide.dev/), including navigation, project actions, contacts, form controls, FAQ toggles and gallery controls. They share a 24 × 24 viewBox, rounded strokes and `currentColor`; service icons display at 20 px. Common sizing lives in `../assets/icons.css`. Icons need no JavaScript loader and remain present when the language changes.
 
 Source: [Lucide revision 1ef60af](https://github.com/lucide-icons/lucide/tree/1ef60af944de207e0d5176905a0759ba12e6ee8d/icons). The upstream ISC/MIT notices are preserved in `../assets/icons/lucide-LICENSE.txt`.
+
+Modrinth and CurseForge marks use brand SVGs from Simple Icons. Sources, licenses and accessibility notes are documented in `../assets/icons/README.md`.

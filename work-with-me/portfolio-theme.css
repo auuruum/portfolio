@@ -248,6 +248,53 @@ h2 em,
 }
 
 /* Lucide service icons share one optical size and stroke treatment. */
+.circle-link,
+.close-dialog {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  line-height: 1;
+}
+.circle-link .icon { --icon-size: 22px; }
+.close-dialog .icon { --icon-size: 16px; }
+.nav-cta .icon,
+.contact-arrow .icon { --icon-size: 14px; }
+.quiet-link .icon,
+.hero-bottom .icon,
+.window-marker .icon,
+.release-links .icon,
+.message-telegram .icon,
+.section-index .icon { --icon-size: 12px; }
+.section-index .icon { margin-inline: 4px; }
+.label-cross .icon,
+.form-mark .icon { --icon-size: 20px; }
+.note-symbol .icon { --icon-size: 24px; }
+.contact-arrow,
+.label-cross,
+.window-marker,
+.form-mark,
+.note-symbol,
+.disclosure-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.footer > div a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.release-links a {
+  align-items: center;
+}
+.button .icon,
+.nav-cta .icon,
+.contact-icon .icon {
+  display: block;
+}
 .capability-symbol,
 .capability-arrow {
   display: inline-flex;
@@ -275,6 +322,10 @@ h2 em,
 }
 
 @media (max-width: 360px) {
+  .nav-cta {
+    gap: 8px;
+    padding-inline: 10px;
+  }
   .navigation {
     gap: 6px;
   }

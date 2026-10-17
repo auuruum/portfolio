@@ -1,0 +1,17 @@
+/* Local, inline SVG icons: no font metrics or runtime replacement required. */
+.icon {
+  display: inline-block;
+  width: var(--icon-size, 18px);
+  height: var(--icon-size, 18px);
+  flex-shrink: 0;
+  vertical-align: -0.125em;
+}
+.icon--xs { --icon-size: 12px; }
+.icon--sm { --icon-size: 14px; }
+.icon--lg { --icon-size: 20px; }
+.brand-icon {
+  display: block;
+  width: var(--brand-icon-size, 24px);
+  height: var(--brand-icon-size, 24px);
+  flex-shrink: 0;
+}

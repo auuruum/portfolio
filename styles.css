@@ -1419,6 +1419,7 @@ main {
 }
 
 .project-group--bebraland {
+  scroll-margin-top: 96px;
   border-top-color: rgba(67, 212, 125, 0.42);
 }
 

@@ -45,13 +45,13 @@ html[data-page-transition]::after {
   border: 1px solid rgba(185, 222, 255, 0.65);
   border-radius: 50%;
   box-shadow: 0 0 28px rgba(137, 170, 204, 0.3), 0 0 100px rgba(78, 133, 191, 0.2), inset 0 0 36px rgba(137, 170, 204, 0.18);
+  /* Keep the same animation through both phases; arrival must not restart the ring. */
+  animation: portal-ring-out 560ms cubic-bezier(0.7, 0, 0.2, 1) both;
 }
 html[data-page-transition="leaving"] { cursor: progress; }
 html[data-page-transition="leaving"]::before { animation: scene-glow-in 560ms ease both; }
-html[data-page-transition="leaving"]::after { animation: portal-ring-out 560ms cubic-bezier(0.7, 0, 0.2, 1) both; }
 html[data-page-transition="leaving"] #page-shell { animation: foreground-out 560ms ease both; }
 html[data-page-transition="arriving"]::before { animation: scene-glow-out 700ms ease both; }
-html[data-page-transition="arriving"]::after { animation: portal-ring-in 800ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 html[data-page-transition="arriving"] #page-shell { animation: foreground-in 650ms ease both; }
 html[data-page-transition="arriving"] :is(.hero-content, .hero-copy) { animation: portal-copy-in 850ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 html[data-page-transition="arriving"] .hero-scene { animation: portal-scene-in 950ms cubic-bezier(0.16, 1, 0.3, 1) both; }
@@ -59,7 +59,6 @@ html[data-page-transition="arriving"] :is(.site-header, .header) { animation: po
 @keyframes scene-glow-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes scene-glow-out { from { opacity: 1; } to { opacity: 0; } }
 @keyframes portal-ring-out { from { opacity: 0.9; transform: scale(0.02); } to { opacity: 0; transform: scale(3.4); } }
-@keyframes portal-ring-in { from { opacity: 0.65; transform: scale(0.2); } to { opacity: 0; transform: scale(3.4); } }
 @keyframes foreground-out { from { opacity: 1; } to { opacity: 0; } }
 @keyframes foreground-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes portal-copy-in { from { opacity: 0; transform: translateY(28px); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }

@@ -17,6 +17,11 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
 
 body {
@@ -1419,7 +1424,6 @@ main {
 }
 
 .project-group--bebraland {
-  scroll-margin-top: 96px;
   border-top-color: rgba(67, 212, 125, 0.42);
 }
 

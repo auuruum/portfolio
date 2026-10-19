@@ -124,12 +124,12 @@
     doc.body.querySelectorAll("script").forEach((script) => script.remove());
     return { doc, styles: loaded[0].filter((link) => link.hasAttribute("data-page-style")) };
   }
-  function scrollToDestination(url, position) {
+  function scrollToDestination(url, position, behavior = "instant") {
     let id = "";
     try { id = decodeURIComponent(url.hash.slice(1)); } catch { /* Invalid fragments behave like an ordinary link. */ }
     const target = id && document.getElementById(id);
-    if (target) target.scrollIntoView({ behavior: "instant", block: "start" });
-    else window.scrollTo({ left: position?.[0] || 0, top: position?.[1] || 0, behavior: "instant" });
+    if (target) target.scrollIntoView({ behavior, block: "start" });
+    else window.scrollTo({ left: position?.[0] || 0, top: position?.[1] || 0, behavior });
   }
   function reset() {
     delete root.dataset.pageTransition;
@@ -246,7 +246,8 @@
       entry = history.state?.portfolioEntry || ++nextEntry;
       history.replaceState({ ...history.state, portfolioEntry: entry }, "");
       currentURL = url;
-      scrollToDestination(url, position);
+      // Fragment navigation also fires popstate; keep its scroll animation intact.
+      scrollToDestination(url, position, motion.matches ? "instant" : "smooth");
       return;
     }
     navigate(url, page, { pop: true, position });

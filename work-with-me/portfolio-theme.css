@@ -20,6 +20,107 @@
   color: var(--text);
 }
 
+/* Carry Home's cosmic atmosphere into the service page. */
+body {
+  background:
+    radial-gradient(ellipse 70% 17% at 100% 30%, rgba(78, 133, 191, 0.07), transparent),
+    radial-gradient(ellipse 65% 15% at 0% 56%, rgba(137, 170, 204, 0.045), transparent),
+    var(--bg);
+}
+
+.hero {
+  isolation: isolate;
+}
+.hero-atmosphere,
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 50vw);
+  width: 100vw;
+  pointer-events: none;
+}
+.hero-atmosphere,
+.hero::before {
+  top: 0;
+  bottom: -180px;
+  mask-image: linear-gradient(#000 48%, rgba(0, 0, 0, 0.7) 66%, transparent 100%);
+}
+.hero-atmosphere {
+  z-index: -3;
+  overflow: hidden;
+}
+.hero-atmosphere::before,
+.hero-atmosphere video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero-atmosphere::before {
+  content: "";
+  background: url("../assets/cosmos-poster.webp") center 25% / cover no-repeat;
+}
+.hero-atmosphere video {
+  display: block;
+  object-fit: cover;
+  object-position: center 25%;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+.hero-atmosphere.is-playing video {
+  opacity: 1;
+}
+.hero::before {
+  z-index: -2;
+  background:
+    linear-gradient(90deg, rgba(10, 10, 10, 0.94), rgba(10, 10, 10, 0.58) 42%, rgba(10, 10, 10, 0.12) 75%),
+    linear-gradient(180deg, rgba(10, 10, 10, 0.12), transparent 40%, rgba(10, 10, 10, 0.9) 80%);
+}
+.hero::after {
+  top: 100px;
+  bottom: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(137, 170, 204, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(137, 170, 204, 0.055) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 48% 55% at 74% 42%, #000, transparent);
+}
+
+.contact-section {
+  position: relative;
+  isolation: isolate;
+}
+.contact-section::before {
+  content: "";
+  position: absolute;
+  inset: -50px calc(50% - 50vw) -40px;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 75% 45%, rgba(78, 133, 191, 0.12), transparent 58%),
+    radial-gradient(ellipse at 8% 65%, rgba(137, 170, 204, 0.05), transparent 48%);
+  mask-image: linear-gradient(transparent, #000 22%, #000 78%, transparent);
+  pointer-events: none;
+}
+
+@media (max-width: 800px) {
+  .hero::before {
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.5), rgba(10, 10, 10, 0.74) 42%, rgba(10, 10, 10, 0.95) 90%);
+  }
+  .hero-atmosphere::before {
+    background-position: 62% top;
+    background-size: auto 85%;
+  }
+  .hero-atmosphere video {
+    object-position: 62% top;
+  }
+  .hero::after {
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 75% 45% at 65% 63%, #000, transparent);
+  }
+}
+
 .navigation {
   background: rgba(20, 20, 20, 0.78);
   border-color: var(--stroke);
@@ -133,11 +234,56 @@ h2 em,
 }
 
 .hero-scene::before {
-  background: radial-gradient(ellipse at 60% 45%, rgba(137, 170, 204, 0.14), transparent 65%);
+  background: radial-gradient(ellipse at 60% 45%, rgba(137, 170, 204, 0.2), transparent 65%);
 }
 .scene-orbit,
 .scene-orbit::before {
-  border-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(137, 170, 204, 0.16);
+}
+.scene-orbit {
+  box-shadow: 0 0 50px rgba(137, 170, 204, 0.035), inset 0 0 40px rgba(137, 170, 204, 0.025);
+}
+.scene-orbit::after {
+  content: "";
+  position: absolute;
+  top: 14%;
+  right: 12%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-a);
+  box-shadow: 0 0 12px rgba(137, 170, 204, 0.65);
+}
+
+@keyframes cosmic-drift {
+  from { transform: scale(1.02) translate(0, 0); }
+  to { transform: scale(1.1) translate(-1%, 1%); }
+}
+@keyframes orbit-turn {
+  from { transform: rotate(-12deg); }
+  to { transform: rotate(348deg); }
+}
+@keyframes atmosphere-breathe {
+  from { opacity: 0.55; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-atmosphere::before {
+    animation: cosmic-drift 24s ease-in-out infinite alternate;
+  }
+  .scene-orbit {
+    animation: orbit-turn 70s linear infinite;
+  }
+  .hero-scene::before,
+  .hero::after,
+  .contact-section::before {
+    animation: atmosphere-breathe 7s ease-in-out infinite alternate;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-atmosphere video {
+    display: none;
+  }
 }
 .product-window,
 .case-visual,

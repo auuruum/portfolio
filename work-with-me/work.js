@@ -373,6 +373,61 @@
   window.addEventListener("scroll", updateHeader, { passive: true });
   updateHeader();
 
+  // Use Home's moving cosmos; the drifting poster remains if playback is unavailable.
+  const cosmicVideo = document.querySelector("#cosmic-video");
+  const atmosphere = cosmicVideo.closest(".hero-atmosphere");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let heroVisible = true;
+  let cosmicPlayer;
+  let videoInitialized = false;
+
+  function updateCosmicPlayback() {
+    if (reducedMotion.matches || document.hidden || !heroVisible) {
+      cosmicVideo.pause();
+      if (reducedMotion.matches) atmosphere.classList.remove("is-playing");
+      return;
+    }
+    if (!videoInitialized) {
+      videoInitialized = true;
+      const source = "https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8";
+      if (cosmicVideo.canPlayType("application/vnd.apple.mpegurl")) {
+        cosmicVideo.src = source;
+      } else {
+        const playerScript = document.createElement("script");
+        playerScript.src = "https://cdn.jsdelivr.net/npm/hls.js@latest";
+        playerScript.onload = () => {
+          if (!window.Hls?.isSupported()) return;
+          cosmicPlayer = new window.Hls({ capLevelToPlayerSize: true, maxBufferLength: 12, maxMaxBufferLength: 24 });
+          cosmicPlayer.on(window.Hls.Events.MANIFEST_PARSED, updateCosmicPlayback);
+          cosmicPlayer.on(window.Hls.Events.ERROR, (_event, data) => {
+            if (data.fatal) {
+              atmosphere.classList.remove("is-playing");
+              cosmicPlayer.destroy();
+            }
+          });
+          cosmicPlayer.loadSource(source);
+          cosmicPlayer.attachMedia(cosmicVideo);
+        };
+        document.head.append(playerScript);
+      }
+    }
+    if (cosmicVideo.readyState > 0) cosmicVideo.play().catch(() => { /* Keep the animated poster when autoplay is blocked. */ });
+  }
+
+  cosmicVideo.muted = true;
+  cosmicVideo.addEventListener("loadeddata", updateCosmicPlayback);
+  cosmicVideo.addEventListener("playing", () => atmosphere.classList.toggle("is-playing", !reducedMotion.matches));
+  cosmicVideo.addEventListener("error", () => atmosphere.classList.remove("is-playing"));
+  document.addEventListener("visibilitychange", updateCosmicPlayback);
+  reducedMotion.addEventListener("change", updateCosmicPlayback);
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([entry]) => {
+      heroVisible = entry.isIntersecting;
+      updateCosmicPlayback();
+    }).observe(document.querySelector(".hero"));
+  }
+  updateCosmicPlayback();
+
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     document.documentElement.classList.add("can-reveal");
     const observer = new IntersectionObserver((entries) => {

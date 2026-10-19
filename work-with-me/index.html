@@ -10,9 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;450;500;550;600;650;700;750&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="work.css" />
-    <link rel="stylesheet" href="portfolio-theme.css" />
+    <link rel="stylesheet" href="portfolio-theme.css?v=20261019-motion" />
     <link rel="stylesheet" href="../assets/icons.css" />
-    <script src="work.js" defer></script>
+    <script src="work.js?v=20261019-motion" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -38,6 +38,9 @@
 
     <main id="main">
       <section class="hero wrapper" aria-labelledby="hero-title">
+        <div class="hero-atmosphere" aria-hidden="true">
+          <video id="cosmic-video" muted loop playsinline preload="none" tabindex="-1"></video>
+        </div>
         <div class="hero-copy">
           <p class="eyebrow"><span class="signal" aria-hidden="true"></span><span data-i18n="heroEyebrow">Independent developer · Vilnius, LT</span></p>
           <h1 id="hero-title"><span data-i18n="heroLineOne">Your idea.</span><br /><em data-i18n="heroLineTwo">Let's build it.</em></h1>

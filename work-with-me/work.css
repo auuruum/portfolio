@@ -2495,3 +2495,245 @@ body {
 .button-light:hover {
   border-color: #89aaccaa;
 }
+
+/* Budget calculator: local choices, an immediate range, then an optional brief. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.pricing-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.pricing-controls,
+.pricing-field {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.pricing-controls { padding: 36px; }
+.pricing-field + .pricing-field { margin-top: 28px; }
+.pricing-label {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 0;
+  margin-bottom: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+.pricing-step {
+  color: var(--accent);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.pricing-field select {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+.pricing-field select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.pricing-scope-options { display: grid; gap: 8px; }
+.pricing-scope-options label { position: relative; cursor: pointer; }
+.pricing-scope-options input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.pricing-scope-options label > span {
+  display: block;
+  padding: 13px 16px 13px 38px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--bg);
+  transition: border-color 160ms, background 160ms;
+}
+.pricing-scope-options label > span::before {
+  content: "";
+  position: absolute;
+  top: 19px;
+  left: 15px;
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--muted);
+  border-radius: 50%;
+}
+.pricing-scope-options input:checked + span {
+  border-color: var(--accent);
+  background: rgba(137, 170, 204, 0.08);
+}
+.pricing-scope-options input:checked + span::before {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: inset 0 0 0 2px var(--surface);
+}
+.pricing-scope-options input:focus-visible + span {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.pricing-scope-options label:hover > span { border-color: var(--accent); }
+.pricing-scope-options strong {
+  display: block;
+  font-size: 12px;
+  line-height: 1.6;
+  font-weight: 550;
+}
+.pricing-scope-options small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.pricing-check,
+.pricing-component-options label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+  cursor: pointer;
+}
+.pricing-check + .pricing-check { margin-top: 12px; }
+.pricing-check input,
+.pricing-component-options input {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  margin: 3px 0 0;
+  accent-color: var(--accent);
+}
+.pricing-component-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.pricing-hint {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.8;
+  margin: 13px 0 0;
+}
+.pricing-result {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 40px 36px 32px;
+  border-left: 1px solid var(--line);
+  background: radial-gradient(ellipse at top right, rgba(137, 170, 204, 0.12), transparent 65%), var(--bg);
+}
+.pricing-result .eyebrow { margin-bottom: 26px; line-height: 1.8; }
+.estimate-price {
+  margin: 0 0 17px;
+  font-size: clamp(48px, 5vw, 68px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.065em;
+  font-variant-numeric: tabular-nums;
+}
+.pricing-result[data-review="true"] .estimate-price {
+  font-family: var(--display);
+  font-size: clamp(38px, 4vw, 52px);
+  font-style: italic;
+  letter-spacing: -0.025em;
+}
+.estimate-badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border: 1px solid rgba(137, 170, 204, 0.25);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 10px;
+  line-height: 1.6;
+}
+.estimate-summary {
+  min-height: 65px;
+  margin: 23px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+.estimate-reference {
+  margin: 12px 0 0;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.estimate-included {
+  margin-top: 27px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 11px;
+  line-height: 1.8;
+}
+.estimate-included > p { margin-bottom: 9px; font-weight: 600; }
+.estimate-included ul { list-style: none; padding: 0; margin: 0 0 25px; color: var(--muted); }
+.estimate-included li::before { content: "+"; color: var(--accent); padding-right: 10px; }
+.estimate-cta { width: 100%; margin-top: auto; justify-content: space-between; }
+.pricing-footnote,
+.pricing-noscript { margin: 16px 0 0; color: var(--muted); font-size: 10px; line-height: 1.9; }
+.brief-estimate {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 16px;
+  margin: 0 0 24px;
+  border: 1px solid rgba(137, 170, 204, 0.3);
+  border-radius: 8px;
+  background: rgba(137, 170, 204, 0.06);
+}
+.brief-estimate > div { min-width: 0; }
+.brief-estimate strong { color: var(--accent); font-size: 11px; font-weight: 600; }
+.brief-estimate p { margin: 7px 0 0; font-size: 11px; line-height: 1.8; color: var(--muted); }
+.brief-estimate button {
+  border: 0;
+  padding: 3px 0;
+  margin-left: auto;
+  background: transparent;
+  color: var(--muted);
+  font-size: 10px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.brief-estimate button:hover { color: var(--text); }
+.pricing [hidden],
+.brief-estimate[hidden] { display: none; }
+@media (max-width: 800px) {
+  .pricing-layout { grid-template-columns: 1fr; }
+  .pricing-result { border-left: 0; border-top: 1px solid var(--line); }
+  .estimate-summary { min-height: 0; }
+  .pricing-controls, .pricing-result { padding: 28px; }
+}
+@media (max-width: 600px) {
+  .pricing-controls, .pricing-result { padding: 24px 20px; }
+  .pricing-field select { font-size: 16px; }
+  .pricing-label { font-size: 12px; }
+  .pricing-component-options { grid-template-columns: 1fr; }
+  .estimate-price { font-size: 56px; }
+  .estimate-cta { font-size: 12px; }
+  .brief-estimate { padding: 13px; gap: 10px; }
+}

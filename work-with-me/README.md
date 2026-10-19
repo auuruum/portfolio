@@ -8,6 +8,22 @@ From the repository root, run `python -m http.server 8767 --bind 127.0.0.1` and 
 
 Language links support `?lang=en`, `?lang=ru` and `?lang=lt`. Switching updates the URL and remembers the choice in this browser.
 
+## Budget calculator
+
+The calculator sits after the service links and works in EN/RU/LT without collecting contact details. Service links select the corresponding calculator option.
+
+- Simple mods/plugins and Discord bots: €30–40 for one small feature, €40–50 for a few simple related features.
+- Small changes: €15–20 for one fix, €20–25 for a few related fixes. Existing code is reviewed before a final quote.
+- Small launches using existing tools: a €200–300 **starting budget**, with the actual scope still to agree. Selected components are a wishlist, not a promise that the entire set is included.
+- Larger work, uncertainty, databases/integrations/dashboards/payments, multiple versions/platforms/servers, or a launcher in a complete project require an individual quote. The basic range stays visible only as a reference.
+- Websites, server setups and standalone launchers have no automatic price until rates for those services are agreed.
+
+Prices live in `pricingServices` in `work.js`; calculator copy lives in `pricingTranslations`. Hosting, domains, paid services and ongoing maintenance are separate from development.
+
+“Use this estimate” attaches the current selection to the inquiry and selects its service. Further calculator changes update the attached estimate. Removing it, or deselecting its service in the form, detaches it. The visitor's own budget remains a separate, untouched field. The prepared message includes the chosen scope, components, additional requirements and estimate status.
+
+Calculator choices and the attached-estimate flag are retained in memory when navigating to the portfolio and back, along with the inquiry draft. They are not saved to local storage or sent to a server. Language changes preserve the choices and translate the attached estimate.
+
 ## Contact behavior
 
 - Preparing a brief shows a review dialog. It does not submit an order or send a message.

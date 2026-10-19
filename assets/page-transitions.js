@@ -36,7 +36,7 @@
     initializers.get(page)({ signal: lifecycle.signal, onCleanup: (fn) => cleanups.push(fn) });
   }
   function rememberDraft() {
-    drafts.set(currentPage, [...shell.querySelectorAll("input[id], textarea[id]")].map((field) => ({
+    drafts.set(currentPage, [...shell.querySelectorAll("input[id], textarea[id], select[id]")].map((field) => ({
       id: field.id, value: field.value, checked: field.checked,
     })));
     drafts.set(`${currentPage}-types`, [...shell.querySelectorAll("input[name='type']")].map((input) => input.checked));

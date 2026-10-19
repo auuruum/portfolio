@@ -96,22 +96,24 @@
 
     loadDownloadStats();
 
-    const copyEmailButton = document.querySelector("#copy-email");
     const copyStatus = document.querySelector("#copy-status");
-    const emailAddress = "aurimasdovgialo@gmail.com";
-
-    copyEmailButton?.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(emailAddress);
-        copyStatus.textContent = "Copied";
-      } catch {
-        copyStatus.textContent = "Select the email above to copy it";
-      }
-
-      window.setTimeout(() => {
-        copyStatus.textContent = "";
-      }, 2400);
-    });
+    let copyReset;
+    onCleanup(() => clearTimeout(copyReset));
+    for (const [selector, value, copied, fallback] of [
+      ["#copy-email", "aurimasdovgialo@gmail.com", "Email copied", "Select the email above to copy it"],
+      ["#copy-discord", "auuruum", "Discord username copied", "Discord: auuruum — select and copy this username"],
+    ]) {
+      document.querySelector(selector)?.addEventListener("click", async () => {
+        clearTimeout(copyReset);
+        try {
+          await navigator.clipboard.writeText(value);
+          copyStatus.textContent = copied;
+          copyReset = window.setTimeout(() => { copyStatus.textContent = ""; }, 2400);
+        } catch {
+          copyStatus.textContent = fallback;
+        }
+      });
+    }
 
     const lightbox = document.querySelector("#lightbox");
     const lightboxImage = document.querySelector("#lightbox-image");

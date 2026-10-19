@@ -30,6 +30,8 @@
         copyFallback: "The message is selected. Copy it with Ctrl+C or your device’s copy command.",
         emailCopied: "Email address copied.",
         emailFallback: "You can select and copy the email address above.",
+        discordCopied: "Discord username copied.",
+        discordFallback: "Discord: auuruum — select and copy this username.",
         websiteAlt: "BebraLand community website",
         launcherAlt: "BebraLand launcher with profiles and game controls",
       },
@@ -94,6 +96,7 @@
         "startDescription": "Pokalbiui pradėti užtenka idėjos. Paruošk trumpą aprašymą arba parašyk man tiesiogiai.",
         "personalNote": "Bendrausi tiesiogiai su manimi.",
         "emailLabel": "Kopijuoti el. paštą",
+        "discordLabel": "Kopijuoti Discord",
         "briefEyebrow": "Nuo čia pradedame",
         "typeLabel": "Ką norėtum sukurti?",
         "typeHint": "Pažymėk, kas tinka, arba tiesiog aprašyk idėją žemiau.",
@@ -138,6 +141,8 @@
         "copyFallback": "Tekstas pažymėtas. Nukopijuok jį naudodamas „Ctrl+C“ arba įrenginio kopijavimo funkciją.",
         "emailCopied": "El. pašto adresas nukopijuotas.",
         "emailFallback": "Gali pažymėti ir nukopijuoti aukščiau pateiktą el. pašto adresą.",
+        "discordCopied": "Discord vardas nukopijuotas.",
+        "discordFallback": "Discord: auuruum — pažymėk ir nukopijuok šį vardą.",
         "websiteAlt": "„BebraLand“ bendruomenės svetainė",
         "launcherAlt": "„BebraLand“ paleidyklė su profiliais ir žaidimo valdymu"
       },
@@ -202,6 +207,7 @@
         startDescription: "Для первого разговора достаточно идеи. Подготовь короткое описание или напиши мне напрямую.",
         personalNote: "Ты общаешься напрямую со мной.",
         emailLabel: "Скопировать email",
+        discordLabel: "Скопировать Discord",
         briefEyebrow: "Отправная точка",
         typeLabel: "Что хочется сделать?",
         typeHint: "Отметь подходящее или просто опиши идею ниже.",
@@ -246,6 +252,8 @@
         copyFallback: "Текст выделен. Скопируй его через Ctrl+C или команду копирования на устройстве.",
         emailCopied: "Email скопирован.",
         emailFallback: "Можно выделить и скопировать email выше.",
+        discordCopied: "Ник Discord скопирован.",
+        discordFallback: "Discord: auuruum — выдели и скопируй этот ник.",
         websiteAlt: "Сайт Minecraft-сообщества BebraLand",
         launcherAlt: "Лаунчер BebraLand с профилями и управлением игрой",
       },
@@ -359,15 +367,20 @@
       }
     });
 
-    document.querySelector("#copy-email").addEventListener("click", async () => {
-      const status = document.querySelector("#contact-status");
-      try {
-        await navigator.clipboard.writeText(email);
-        status.textContent = t("emailCopied");
-      } catch {
-        status.textContent = t("emailFallback");
-      }
-    });
+    const contactStatus = document.querySelector("#contact-status");
+    for (const [selector, value, copied, fallback] of [
+      ["#copy-email", email, "emailCopied", "emailFallback"],
+      ["#copy-discord", "auuruum", "discordCopied", "discordFallback"],
+    ]) {
+      document.querySelector(selector).addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(value);
+          contactStatus.textContent = t(copied);
+        } catch {
+          contactStatus.textContent = t(fallback);
+        }
+      });
+    }
 
     const header = document.querySelector("#header");
     const updateHeader = () => header.classList.toggle("scrolled", window.scrollY > 30);

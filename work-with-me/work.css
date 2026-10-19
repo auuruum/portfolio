@@ -2168,8 +2168,11 @@ html[lang=ru] .capability-list>a:first-child {
   .direct-contacts {
     max-width:none;
     display:grid;
-    grid-template-columns:1fr 1.4fr;
-    gap:15px;
+    grid-template-columns:1fr 1fr;
+    gap:0 15px;
+  }
+  .direct-contact:last-child {
+    grid-column:1 / -1;
   }
   .direct-contact {
     padding-block:15px;

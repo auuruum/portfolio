@@ -8,8 +8,9 @@
       content="auuruum portfolio: esports infrastructure, Minecraft mods, Arduino hardware, Discord tooling, creative code, and visual experiments."
     />
     <title>auuruum | Portfolio</title>
-    <link rel="stylesheet" href="assets/page-transitions.css?v=20261019-portal" />
-    <script src="assets/page-transitions.js?v=20261019-portal"></script>
+    <link rel="stylesheet" href="assets/page-transitions.css?v=20261019-continuous-v2" />
+    <script src="assets/cosmic-scene.js?v=20261019-continuous-v2"></script>
+    <script src="assets/page-transitions.js?v=20261019-continuous-v2"></script>
     <script>
       // Decide before the first paint so returning visitors never see the overlay flash.
       try {
@@ -27,10 +28,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap"
+      data-page-font href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css" data-page-style />
     <link rel="stylesheet" href="assets/icons.css" />
   </head>
   <body>
@@ -56,7 +57,7 @@
     </header>
 
     <main id="top">
-      <section class="hero" aria-label="Portfolio hero">
+      <section class="hero" aria-label="Portfolio hero" data-cosmic-region>
         <video
           class="hero-video"
           id="hero-video"
@@ -448,7 +449,7 @@
         </div>
       </section>
 
-      <section class="section contact" id="contact">
+      <section class="section contact" id="contact" data-cosmic-region>
         <video
           class="footer-video"
           id="footer-video"
@@ -510,7 +511,6 @@
         <button class="lightbox-nav" id="lightbox-next" type="button" aria-label="Next screenshot"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></button>
       </div>
     </dialog>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script src="script.js"></script>
+    <script src="script.js?v=20261019-continuous-v2" data-page-script></script>
   </body>
 </html>

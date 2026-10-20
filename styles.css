@@ -1018,6 +1018,11 @@ main {
     padding: 64px 0;
   }
 
+  .section.contact {
+    width: 100%;
+    padding-inline: 12px;
+  }
+
   .project-card {
     min-height: 360px;
     padding: 22px;

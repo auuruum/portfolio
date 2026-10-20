@@ -10,6 +10,10 @@ Language links support `?lang=en`, `?lang=ru` and `?lang=lt`. Switching updates 
 
 Visible translated text fades out with a slight blur, then the new language appears with a small upward reveal and a short stagger. Only rendered text blocks animate; the cosmic video keeps playing. The current reading position, calculator choices and inquiry draft are preserved. Rapid clicks cancel the previous transition and use the last selected language. Reduced-motion preferences switch immediately, including when enabled during a transition. Page cleanup cancels language animations before navigation replaces the foreground.
 
+## Hero composition
+
+The hero shows the complete launcher and website screenshots at their original proportions, with overlapping placement, a shared perspective and restrained shadows. The project caption sits below the composition and links to the details; each screen has its own attached label. Labels and image descriptions follow EN/RU/LT; layout styles live in `hero-layers.css`.
+
 ## Budget calculator
 
 The calculator sits after the service links and works in EN/RU/LT without collecting contact details. Service links select the corresponding calculator option.

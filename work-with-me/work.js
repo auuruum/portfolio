@@ -57,6 +57,7 @@
         "heroNote": "Apimtį, kainą ir terminus suderiname prieš pradėdami.",
         "sceneBuilt": "Tikras projektas iš mano portfolio",
         "sceneLabel": "Viskas veikia kartu.",
+        "heroLayersProject": "Mano Minecraft projektas",
         "backPortfolio": "Grįžti į portfolio",
         "capabilitiesEyebrow": "Ką galime sukurti",
         "capabilitiesNote": "Nuo vienos funkcijos iki viso projekto.",
@@ -174,6 +175,7 @@
         heroNote: "Объём, стоимость и сроки согласуем до начала работы.",
         sceneBuilt: "Реальный проект из моего портфолио",
         sceneLabel: "Всё работает вместе.",
+        heroLayersProject: "Мой Minecraft-проект",
         backPortfolio: "Вернуться в портфолио",
         capabilitiesEyebrow: "Что можно разработать",
         capabilitiesNote: "От одной функции до целого проекта.",
@@ -852,6 +854,9 @@
       placeholderElements.forEach((element) => { element.placeholder = t(element.dataset.i18nPlaceholder); });
       languageButtons.forEach((button) => { button.setAttribute("aria-pressed", String(button.dataset.language === language)); });
       document.querySelector("#showcase-image").alt = t(currentShowcase === "website" ? "websiteAlt" : "launcherAlt");
+      document.querySelectorAll("[data-hero-image]").forEach((image) => {
+        image.alt = t(image.dataset.heroImage === "website" ? "websiteAlt" : "launcherAlt");
+      });
       document.querySelector("#contact-status").textContent = "";
       document.querySelector("#message-status").textContent = "";
       renderEstimate();

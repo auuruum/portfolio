@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="work.css?v=20261020-pricing" data-page-style />
     <link rel="stylesheet" href="portfolio-theme.css?v=20261019-premium-nav" data-page-style />
     <link rel="stylesheet" href="../assets/icons.css" />
-    <script src="work.js?v=20261020-pricing-v2" defer data-page-script></script>
+    <script src="work.js?v=20261020-pricing-v3" defer data-page-script></script>
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -181,7 +181,7 @@
       <section class="pricing wrapper section-space" id="pricing" aria-labelledby="pricing-title">
         <div class="section-heading" data-reveal>
           <div><p class="eyebrow" data-i18n="pricingEyebrow">A quick budget check</p><h2 id="pricing-title"><span data-i18n="pricingTitleOne">Your idea.</span><br /><em data-i18n="pricingTitleTwo">A starting price.</em></h2></div>
-          <p class="section-description" data-i18n="pricingDescription">Choose a service and the closest example. These are budget guides; we agree the exact work and final price before starting.</p>
+          <p class="section-description" data-i18n="pricingDescription">Choose a service and the closest scope. These are budget guides; we agree the exact work and final price before starting.</p>
         </div>
         <div class="pricing-layout" data-reveal>
           <fieldset class="pricing-controls" id="pricing-controls" disabled aria-labelledby="pricing-choice-title">
@@ -211,16 +211,18 @@
               <legend class="pricing-label" data-i18n="pricingComponents">Which parts do you have in mind?</legend>
               <div class="pricing-component-options">
                 <label><input id="estimate-part-server" type="checkbox" value="server" /><span data-i18n="typeServer">Server setups</span></label>
+                <label><input id="estimate-part-mods" type="checkbox" value="mods" /><span data-i18n="typeMods">Minecraft mods &amp; plugins</span></label>
                 <label><input id="estimate-part-website" type="checkbox" value="website" /><span data-i18n="typeWebsite">Websites</span></label>
                 <label><input id="estimate-part-bot" type="checkbox" value="bot" /><span data-i18n="typeBot">Discord bots</span></label>
                 <label><input id="estimate-part-launcher" type="checkbox" value="launcher" /><span data-i18n="typeLauncher">Launchers</span></label>
               </div>
             </fieldset>
-            <fieldset class="pricing-field pricing-extras">
-              <legend class="pricing-label" data-i18n="pricingExtras">Anything else involved?</legend>
-              <label class="pricing-check"><input id="estimate-integrations" type="checkbox" /><span data-i18n="pricingIntegration">A database, external service, web dashboard or payments</span></label>
-              <label class="pricing-check"><input id="estimate-platforms" type="checkbox" /><span data-i18n="pricingPlatforms">Multiple game versions, platforms, languages or servers</span></label>
-              <p class="pricing-hint" data-i18n="pricingExtrasHint">These require a separate quote. They are not included in the basic ranges.</p>
+            <fieldset class="pricing-field pricing-extras" id="estimate-extras">
+              <legend class="pricing-label" id="estimate-extras-title">Any additional requirements?</legend>
+              <label class="pricing-check"><input id="estimate-extra-one" type="checkbox" /><span id="estimate-extra-one-label">A database, external service or website integration</span></label>
+              <label class="pricing-check"><input id="estimate-extra-two" type="checkbox" /><span id="estimate-extra-two-label">More than one Minecraft version, mod loader or server platform</span></label>
+              <label class="pricing-check"><input id="estimate-extra-three" type="checkbox" /><span id="estimate-extra-three-label">Custom textures, models or sounds</span></label>
+              <p class="pricing-hint" id="estimate-extras-hint">I’ll assess these requirements separately before confirming the scope and price.</p>
             </fieldset>
           </fieldset>
           <aside class="pricing-result" aria-labelledby="estimate-label">
@@ -231,9 +233,9 @@
               <p class="estimate-summary" id="estimate-summary">For one agreed Minecraft version and platform. Scope and any required assets are agreed before starting.</p>
               <p class="estimate-reference" id="estimate-reference" hidden></p>
             </div>
-            <div class="estimate-included"><p data-i18n="pricingIncluded">Included in the agreed work</p><ul><li data-i18n="pricingIncludedBuild">Development and testing</li><li data-i18n="pricingIncludedFiles">Source files and setup instructions</li></ul></div>
+            <div class="estimate-included"><p data-i18n="pricingIncluded">Included in the agreed work</p><ul><li id="estimate-included-build" data-i18n="pricingIncludedBuild">Development and testing</li><li id="estimate-included-files" data-i18n="pricingIncludedFiles">Source files and setup instructions</li></ul></div>
             <a class="button button-light estimate-cta" id="use-estimate" href="#start"><span id="estimate-cta-label" data-i18n="pricingUse">Use this estimate</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></a>
-            <p class="pricing-footnote" data-i18n="pricingFootnote">Final scope, price and timeline are agreed before starting. New features and extra platforms are quoted separately. Hosting, domains, paid services and ongoing maintenance are additional costs.</p>
+            <p class="pricing-footnote" id="estimate-footnote" data-i18n="pricingFootnote">Final scope, price and timeline are agreed before starting. Requests beyond the agreed scope are quoted separately. Custom assets, paid dependencies and ongoing maintenance are separate.</p>
           </aside>
         </div>
         <noscript><p class="pricing-noscript">Mods &amp; plugins: small €20–30, medium €50–70, large from €80 with an individual quote. Small changes €15–25. Simple Discord bots €30–50; integrations from €80 with an individual quote. One-page websites €100–180; small websites €200–350. Basic server setups €40–80; extended setups €100–180. Small launches: €200–300 for an agreed selection of existing components. Launchers and larger custom work: individual quote. Final scope and price are agreed before starting; hosting and maintenance are separate.</p></noscript>

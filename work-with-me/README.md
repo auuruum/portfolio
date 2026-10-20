@@ -8,6 +8,8 @@ From the repository root, run `python -m http.server 8767 --bind 127.0.0.1` and 
 
 Language links support `?lang=en`, `?lang=ru` and `?lang=lt`. Switching updates the URL and remembers the choice in this browser.
 
+Visible translated text fades out with a slight blur, then the new language appears with a small upward reveal and a short stagger. Only rendered text blocks animate; the cosmic video keeps playing. The current reading position, calculator choices and inquiry draft are preserved. Rapid clicks cancel the previous transition and use the last selected language. Reduced-motion preferences switch immediately, including when enabled during a transition. Page cleanup cancels language animations before navigation replaces the foreground.
+
 ## Budget calculator
 
 The calculator sits after the service links and works in EN/RU/LT without collecting contact details. Service links select the corresponding calculator option.

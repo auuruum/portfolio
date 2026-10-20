@@ -834,12 +834,113 @@
       try { localStorage.setItem("auuruum-work-language", language); } catch { /* Language switching also works without storage. */ }
     }
 
-    languageButtons.forEach((button) => button.addEventListener("click", () => {
-      setLanguage(button.dataset.language);
+    const languageMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let languageChange = 0;
+    let requestedLanguage = null;
+    let languageAnimations = [];
+
+    function applyLanguage(nextLanguage) {
+      setLanguage(nextLanguage);
       const url = new URL(window.location.href);
       url.searchParams.set("lang", language);
       try { history.replaceState(history.state, "", url); } catch { /* Local-file browsers may limit history changes. */ }
-    }));
+    }
+
+    function clearLanguageAnimations() {
+      languageAnimations.forEach((animation) => animation.cancel());
+      languageAnimations = [];
+      delete document.documentElement.dataset.languageTransition;
+    }
+
+    function visibleLanguageBlocks() {
+      const selectors = [
+        "[data-i18n]:not(option)", "#estimate-service", "#estimate-scope-title",
+        ".pricing-option-heading", ".pricing-scope-options small", ".pricing-check > span",
+        "#estimate-extras-title", "#estimate-extras-hint", ".estimate-live",
+        ".estimate-included", "#estimate-cta-label", "#estimate-footnote",
+        "#brief-estimate-summary", "#message-preview",
+      ];
+      const blocks = new Set();
+      for (const text of document.querySelectorAll(selectors.join(","))) {
+        if (text.closest("[hidden], .skip-link, dialog:not([open])")) continue;
+        let block = text;
+        // Translate a whole rendered text block instead of moving inline fragments.
+        while (block.parentElement && ["inline", "contents"].includes(getComputedStyle(block).display)) block = block.parentElement;
+        const rect = block.getBoundingClientRect();
+        if (rect.width && rect.height && rect.bottom > 0 && rect.top < innerHeight && rect.right > 0 && rect.left < innerWidth) blocks.add(block);
+      }
+      return [...blocks].filter((block) => ![...blocks].some((parent) => parent !== block && parent.contains(block)));
+    }
+
+    async function changeLanguage(nextLanguage) {
+      if (!Object.hasOwn(translations, nextLanguage) || signal.aborted) return;
+      const change = ++languageChange;
+      requestedLanguage = nextLanguage;
+      clearLanguageAnimations();
+      if (nextLanguage === language || languageMotion.matches || typeof Element.prototype.animate !== "function") {
+        applyLanguage(nextLanguage);
+        requestedLanguage = null;
+        return;
+      }
+
+      const blocks = visibleLanguageBlocks();
+      const scrollStart = window.scrollY;
+      const anchor = blocks.map((element) => ({ element, top: element.getBoundingClientRect().top }))
+        .filter(({ top }) => top >= 110).sort((a, b) => a.top - b.top)[0];
+      try {
+        document.documentElement.dataset.languageTransition = "out";
+        for (const block of blocks) languageAnimations.push(block.animate([
+          { opacity: 1, filter: "blur(0px)", translate: "0 0" },
+          { opacity: 0, filter: "blur(4px)", translate: "0 -4px" },
+        ], { duration: 120, easing: "ease-in", fill: "both" }));
+        await Promise.all(languageAnimations.map((animation) => animation.finished.catch(() => {})));
+        if (change !== languageChange || signal.aborted) return;
+
+        const restoreScroll = Math.abs(window.scrollY - scrollStart) < 2;
+        clearLanguageAnimations();
+        applyLanguage(nextLanguage);
+        if (restoreScroll && scrollStart > 0 && anchor?.element.isConnected) {
+          const offset = anchor.element.getBoundingClientRect().top - anchor.top;
+          if (Math.abs(offset) > 1) window.scrollBy({ top: offset, behavior: "instant" });
+        }
+
+        document.documentElement.dataset.languageTransition = "in";
+        for (const block of visibleLanguageBlocks()) languageAnimations.push(block.animate([
+          { opacity: 0, filter: "blur(5px)", translate: "0 8px" },
+          { opacity: 1, filter: "blur(0px)", translate: "0 0" },
+        ], {
+          duration: 420,
+          delay: Math.min(75, Math.max(0, block.getBoundingClientRect().top * 0.1)),
+          easing: "cubic-bezier(0.16, 1, 0.3, 1)", fill: "both",
+        }));
+        await Promise.all(languageAnimations.map((animation) => animation.finished.catch(() => {})));
+        if (change !== languageChange || signal.aborted) return;
+        clearLanguageAnimations();
+        requestedLanguage = null;
+      } catch {
+        if (change !== languageChange || signal.aborted) return;
+        clearLanguageAnimations();
+        applyLanguage(nextLanguage);
+        requestedLanguage = null;
+      }
+    }
+
+    languageButtons.forEach((button) => button.addEventListener("click", () => {
+      void changeLanguage(button.dataset.language);
+    }, { signal }));
+    languageMotion.addEventListener("change", () => {
+      if (!languageMotion.matches || !requestedLanguage) return;
+      ++languageChange;
+      clearLanguageAnimations();
+      applyLanguage(requestedLanguage);
+      requestedLanguage = null;
+    }, { signal });
+    onCleanup(() => {
+      ++languageChange;
+      requestedLanguage = null;
+      clearLanguageAnimations();
+    });
+
     let initialLanguage = new URLSearchParams(window.location.search).get("lang");
     if (!initialLanguage) {
       try { initialLanguage = localStorage.getItem("auuruum-work-language"); } catch { /* The English default matches the portfolio. */ }

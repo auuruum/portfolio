@@ -7,6 +7,9 @@
     const dialog = document.querySelector("#message-dialog");
     const preview = document.querySelector("#message-preview");
     const emailDraft = document.querySelector("#email-draft");
+    const telegramDraft = document.querySelector("#telegram-draft");
+    const telegramDraftHint = document.querySelector("#telegram-draft-hint");
+    let telegramNeedsCopy = false;
     const submitButton = form.querySelector("[type='submit']");
     const languageButtons = [...document.querySelectorAll("[data-language]")];
     const typeKeys = { mods: "typeMods", website: "typeWebsite", launcher: "typeLauncher", server: "typeServer", bot: "typeBot", full: "typeFull", fix: "typeFix" };
@@ -27,6 +30,9 @@
         briefBudget: "Budget",
         briefTimeline: "Timeline",
         copied: "Message copied. You can paste it into your conversation.",
+        discordBriefCopied: "Message copied. Open a chat with auuruum in Discord and paste it there.",
+        telegramCopy: "Copy & open chat",
+        telegramBriefCopied: "Full message copied. Paste it into Telegram; long messages may need to be sent in parts.",
         copyFallback: "The message is selected. Copy it with Ctrl+C or your device’s copy command.",
         emailCopied: "Email address copied.",
         emailFallback: "You can select and copy the email address above.",
@@ -127,10 +133,14 @@
         "footerLinks": "Visos nuorodos",
         "messageEyebrow": "Taip prasideda pokalbis",
         "messageTitle": "Aprašymas paruoštas.",
-        "messageIntro": "Patikrink detales, tada atidaryk el. laiško juodraštį arba nukopijuok tekstą pokalbiui per Telegram. Dar niekas neišsiųsta.",
-        "emailDraft": "Atidaryti laiško juodraštį",
+        "messageIntro": "Patikrink detales ir pasirink, kur tęsti pokalbį.",
+        "emailDraft": "Atidaryti Gmail juodraštį",
+        "telegramDraft": "Atidaryti pokalbį su tekstu",
+        "telegramCopy": "Kopijuoti ir atidaryti pokalbį",
+        "discordDraft": "Kopijuoti ir atidaryti profilį",
+        "discordPasteHint": "Discord: įklijuok nukopijuotą žinutę į pokalbį su auuruum.",
+        "messageSendNote": "Žinutę peržiūrėsi ir išsiųsi pats.",
         "copyBrief": "Kopijuoti žinutę",
-        "telegramAfterCopy": "Nukopijavai? Atidaryti Telegram",
         "emailSubject": "Projekto aptarimas",
         "greeting": "Labas, Aurimai! Norėčiau aptarti projektą.",
         "briefName": "Vardas / projektas",
@@ -138,6 +148,8 @@
         "briefBudget": "Biudžetas",
         "briefTimeline": "Terminas",
         "copied": "Žinutė nukopijuota. Gali ją įklijuoti į pokalbį.",
+        "discordBriefCopied": "Žinutė nukopijuota. Atidaryk Discord pokalbį su auuruum ir įklijuok ją.",
+        "telegramBriefCopied": "Visa žinutė nukopijuota. Įklijuok ją į Telegram; ilgą žinutę gali tekti siųsti dalimis.",
         "copyFallback": "Tekstas pažymėtas. Nukopijuok jį naudodamas „Ctrl+C“ arba įrenginio kopijavimo funkciją.",
         "emailCopied": "El. pašto adresas nukopijuotas.",
         "emailFallback": "Gali pažymėti ir nukopijuoti aukščiau pateiktą el. pašto adresą.",
@@ -238,10 +250,14 @@
         footerLinks: "Все ссылки",
         messageEyebrow: "С этого начинается разговор",
         messageTitle: "Описание готово.",
-        messageIntro: "Проверь детали, затем открой черновик письма или скопируй текст для Telegram. Пока ничего не отправлено.",
-        emailDraft: "Открыть черновик письма",
+        messageIntro: "Проверь детали и выбери, где продолжить разговор.",
+        emailDraft: "Открыть черновик в Gmail",
+        telegramDraft: "Открыть чат с текстом",
+        telegramCopy: "Скопировать и открыть чат",
+        discordDraft: "Скопировать и открыть профиль",
+        discordPasteHint: "Discord: вставь скопированное сообщение в чат с auuruum.",
+        messageSendNote: "Ты сам проверишь и отправишь сообщение.",
         copyBrief: "Скопировать сообщение",
-        telegramAfterCopy: "Скопировал? Открыть Telegram",
         emailSubject: "Обсуждение проекта",
         greeting: "Привет, Aurimas! Хочу обсудить проект.",
         briefName: "Имя / проект",
@@ -249,6 +265,8 @@
         briefBudget: "Бюджет",
         briefTimeline: "Срок",
         copied: "Сообщение скопировано. Можно вставить его в переписку.",
+        discordBriefCopied: "Сообщение скопировано. Открой чат с auuruum в Discord и вставь его туда.",
+        telegramBriefCopied: "Сообщение скопировано целиком. Вставь его в Telegram; длинный текст может понадобиться отправить частями.",
         copyFallback: "Текст выделен. Скопируй его через Ctrl+C или команду копирования на устройстве.",
         emailCopied: "Email скопирован.",
         emailFallback: "Можно выделить и скопировать email выше.",
@@ -815,6 +833,13 @@
       preview.textContent = currentBrief;
       const query = new URLSearchParams({ view: "cm", fs: "1", to: email, su: t("emailSubject") + (name ? ` · ${name}` : ""), body: currentBrief });
       emailDraft.href = `https://mail.google.com/mail/?${query}`;
+      // Keep the full brief available instead of letting Telegram trim a long draft.
+      telegramNeedsCopy = [...currentBrief].length > 4096;
+      telegramDraft.href = telegramNeedsCopy
+        ? "https://t.me/auurruum"
+        : `https://t.me/auurruum?${new URLSearchParams({ text: currentBrief })}`;
+      telegramDraftHint.dataset.i18n = telegramNeedsCopy ? "telegramCopy" : "telegramDraft";
+      telegramDraftHint.textContent = t(telegramDraftHint.dataset.i18n);
     }
 
     function setLanguage(nextLanguage) {
@@ -1005,20 +1030,32 @@
     document.querySelector("#close-message").addEventListener("click", () => dialog.close());
     dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
 
-    document.querySelector("#copy-brief").addEventListener("click", async () => {
+    async function copyBrief(successKey = "copied") {
       const status = document.querySelector("#message-status");
+      status.textContent = "";
       try {
         await navigator.clipboard.writeText(currentBrief);
-        status.textContent = t("copied");
+        if (!signal.aborted) status.textContent = t(successKey);
       } catch {
+        if (signal.aborted) return;
+        preview.focus();
         const selection = window.getSelection();
         const range = document.createRange();
         range.selectNodeContents(preview);
         selection?.removeAllRanges();
         selection?.addRange(range);
-        preview.focus();
         status.textContent = t("copyFallback");
       }
+    }
+
+    document.querySelector("#copy-brief").addEventListener("click", () => copyBrief());
+    // Start the clipboard write during the click; let the link open normally so
+    // it keeps browser link behavior and does not depend on an async popup.
+    document.querySelector("#discord-draft").addEventListener("click", () => {
+      copyBrief("discordBriefCopied");
+    });
+    telegramDraft.addEventListener("click", () => {
+      if (telegramNeedsCopy) copyBrief("telegramBriefCopied");
     });
 
     const contactStatus = document.querySelector("#contact-status");

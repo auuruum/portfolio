@@ -255,14 +255,12 @@ h2 em,
 .optional-details summary,
 .footer > span,
 .footer > div,
-.message-intro,
-.message-telegram {
+.message-intro {
   color: var(--muted);
 }
 .quiet-link:hover,
 .hero-bottom a:hover,
-.footer a:hover,
-.message-telegram:hover {
+.footer a:hover {
   color: var(--text);
 }
 
@@ -443,7 +441,6 @@ h2 em,
 .hero-bottom .icon,
 .window-marker .icon,
 .release-links .icon,
-.message-telegram .icon,
 .section-index .icon { --icon-size: 12px; }
 .section-index .icon { margin-inline: 4px; }
 .label-cross .icon,

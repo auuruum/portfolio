@@ -12,10 +12,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;450;500;550;600;650;700;750&display=swap" rel="stylesheet" data-page-font />
-    <link rel="stylesheet" href="work.css?v=20261020-pricing" data-page-style />
+    <link rel="stylesheet" href="work.css?v=20261020-contact-drafts" data-page-style />
     <link rel="stylesheet" href="portfolio-theme.css?v=20261019-premium-nav" data-page-style />
     <link rel="stylesheet" href="../assets/icons.css" />
-    <script src="work.js?v=20261020-language-motion" defer data-page-script></script>
+    <script src="work.js?v=20261020-contact-drafts" defer data-page-script></script>
   </head>
   <body>
     <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
@@ -329,6 +329,37 @@
 
     <footer class="footer wrapper"><a class="wordmark" href="../index.html">auuruum<span class="brand-dot">.</span></a><span data-i18n="footerNote">Ideas welcome. Details worked out together.</span><div><a href="https://github.com/auuruum" target="_blank" rel="noreferrer"><span>GitHub</span><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="arrow-up-right"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></a><a href="../index.html"><span data-i18n="footerPortfolio">Portfolio</span><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="arrow-up-right"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></a><a href="https://auuruum.dev/" target="_blank" rel="noreferrer"><span data-i18n="footerLinks">All links</span><svg class="icon icon--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="arrow-up-right"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></a></div></footer>
 
-    <dialog class="message-dialog" id="message-dialog" aria-labelledby="message-title"><div class="message-panel"><button class="close-dialog" type="button" id="close-message" aria-label="Close / Закрыть"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="x"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button><p class="eyebrow" data-i18n="messageEyebrow">The conversation starts here</p><h2 id="message-title" data-i18n="messageTitle">Your brief is ready.</h2><p class="message-intro" data-i18n="messageIntro">Check the details, then open an email draft or copy the message for Telegram. Nothing has been sent.</p><pre class="message-preview" id="message-preview" tabindex="0"></pre><div class="message-actions"><a class="button button-light" id="email-draft" target="_blank" rel="noreferrer"><span data-i18n="emailDraft">Open email draft</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="arrow-up-right"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></a><button class="button button-outline" type="button" id="copy-brief" data-i18n="copyBrief">Copy message</button></div><a class="message-telegram" href="https://telegram.me/auurruum" target="_blank" rel="noreferrer"><span data-i18n="telegramAfterCopy">Copied it? Open Telegram</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="arrow-up-right"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></a><p class="message-status" id="message-status" role="status"></p></div></dialog>
+    <dialog class="message-dialog" id="message-dialog" aria-labelledby="message-title" aria-describedby="message-intro">
+      <div class="message-panel">
+        <button class="close-dialog" type="button" id="close-message" aria-label="Close message"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="x"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg></button>
+        <p class="eyebrow" data-i18n="messageEyebrow">The conversation starts here</p>
+        <h2 id="message-title" data-i18n="messageTitle">Your brief is ready.</h2>
+        <p class="message-intro" id="message-intro" data-i18n="messageIntro">Check the details, then choose where to continue.</p>
+        <pre class="message-preview" id="message-preview" tabindex="0"></pre>
+        <div class="message-channels">
+          <a class="message-channel" id="email-draft" target="_blank" rel="noreferrer">
+            <span class="message-channel-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="mail"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /><rect x="2" y="4" width="20" height="16" rx="2" /></svg></span>
+            <span class="message-channel-copy"><strong>Email</strong><small data-i18n="emailDraft">Open Gmail draft</small></span>
+            <span class="message-channel-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="arrow-up-right"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></span>
+          </a>
+          <a class="message-channel" id="telegram-draft" href="https://t.me/auurruum" target="_blank" rel="noreferrer">
+            <span class="message-channel-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="send"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" /><path d="m21.854 2.147-10.94 10.939" /></svg></span>
+            <span class="message-channel-copy"><strong>Telegram</strong><small id="telegram-draft-hint" data-i18n="telegramDraft">Open chat with draft</small></span>
+            <span class="message-channel-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="arrow-up-right"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></span>
+          </a>
+          <a class="message-channel" id="discord-draft" href="https://discord.com/users/568834033430036525" target="_blank" rel="noreferrer">
+            <span class="message-channel-icon"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" data-brand="discord"><path d="M20.317 4.3698a19.7913 19.7913 0 0 0-4.8851-1.5152.0741.0741 0 0 0-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.393-.4063-.8742-.6264-1.2495a.077.077 0 0 0-.0785-.037A19.7363 19.7363 0 0 0 3.671 4.3698a.07.07 0 0 0-.0321.0277C.5334 9.0463-.319 13.5799.0992 18.0578a.0824.0824 0 0 0 .0312.0561 19.9 19.9 0 0 0 6.0053 3.0344.0777.0777 0 0 0 .0842-.0272c.461-.6304.8723-1.2952 1.2261-1.9942a.076.076 0 0 0-.0416-.1057 13.13 13.13 0 0 1-1.872-.8926.077.077 0 0 1-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.07.07 0 0 1 .0736-.0103c3.9283 1.7933 8.18 1.7933 12.0614 0a.07.07 0 0 1 .0737.0095c.1202.0991.246.1972.3728.2914a.077.077 0 0 1-.0066.1277 12.298 12.298 0 0 1-1.873.8917.0766.0766 0 0 0-.0407.1067c.3604.698.7716 1.3628 1.2252 1.9932a.076.076 0 0 0 .0842.0282 19.839 19.839 0 0 0 6.0133-3.0344.077.077 0 0 0 .0312-.0552c.5004-5.177-.8382-9.6739-3.5495-13.6601a.061.061 0 0 0-.0312-.0286zM8.02 15.3314c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3334.9555-2.419 2.1569-2.419 1.2101 0 2.1757 1.0944 2.1568 2.419-.01 1.3333-.9555 2.419-2.1568 2.419zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3334.9555-2.419 2.1569-2.419 1.2101 0 2.1757 1.0944 2.1568 2.419-.01 1.3333-.9555 2.419-2.1568 2.419z" /></svg></span>
+            <span class="message-channel-copy"><strong>Discord</strong><small data-i18n="discordDraft">Copy &amp; open profile</small></span>
+            <span class="message-channel-arrow"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="arrow-up-right"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></span>
+          </a>
+        </div>
+        <p class="message-channel-note" data-i18n="discordPasteHint">Discord: paste the copied message into your chat with auuruum.</p>
+        <div class="message-actions">
+          <button class="message-copy" type="button" id="copy-brief"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" data-icon="copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg><span data-i18n="copyBrief">Copy message</span></button>
+          <span class="message-send-note" data-i18n="messageSendNote">You review and send it yourself.</span>
+        </div>
+        <p class="message-status" id="message-status" role="status" aria-live="polite"></p>
+      </div>
+    </dialog>
   </body>
 </html>

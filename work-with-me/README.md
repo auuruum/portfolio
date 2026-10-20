@@ -37,7 +37,9 @@ Calculator choices and the attached-estimate flag are retained in memory when na
 
 - Preparing a brief shows a review dialog. It does not submit an order or send a message.
 - The email action opens Gmail with a draft. The visitor reviews and sends it themselves.
-- Copying the brief lets the visitor paste it into Telegram or another client.
+- Telegram opens the `@auurruum` chat with the brief in the draft, using Telegram's public-username `text` link parameter. Briefs longer than 4,096 Unicode code points are copied in full and open the chat without a draft so the client cannot silently trim them; they may need to be sent in parts.
+- Discord copies the brief and opens the owner's profile (`568834033430036525`, supplied by the owner). The visitor starts a chat and pastes the text; messaging remains subject to Discord's account and privacy settings. There is no automatic DM or text prefill.
+- Channel links open in a new tab. Copying starts during the click, before normal link navigation. Clipboard success is confirmed in the dialog; if copying is unavailable, the preview is selected for manual copying. The separate copy action is available for any client.
 - Form contents are not stored or posted to a server. Only the language preference is stored locally.
 - The Telegram destination is the public `@auurruum` link on `https://auuruum.dev/`, checked on 2026-10-15. Email matches the existing portfolio.
 

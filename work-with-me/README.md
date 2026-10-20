@@ -12,13 +12,16 @@ Language links support `?lang=en`, `?lang=ru` and `?lang=lt`. Switching updates 
 
 The calculator sits after the service links and works in EN/RU/LT without collecting contact details. Service links select the corresponding calculator option.
 
-- Simple mods/plugins and Discord bots: €30–40 for one small feature, €40–50 for a few simple related features.
-- Small changes: €15–20 for one fix, €20–25 for a few related fixes. Existing code is reviewed before a final quote.
-- Small launches using existing tools: a €200–300 **starting budget**, with the actual scope still to agree. Selected components are a wishlist, not a promise that the entire set is included.
-- Larger work, uncertainty, databases/integrations/dashboards/payments, multiple versions/platforms/servers, or a launcher in a complete project require an individual quote. The basic range stays visible only as a reference.
-- Websites, server setups and standalone launchers have no automatic price until rates for those services are agreed.
+- Minecraft mods/plugins: **Small mod** €20–30, **Medium mod** €50–70, **Large mod from €80 with an individual quote**. These tiers use general size labels without per-feature examples; estimates cover one agreed game version and platform.
+- Discord bots: €30–50 for basic commands or a small automation on one server; **from €80 with an individual quote** for integrations or connected workflows.
+- Small changes: €15–25 for one defined change, after reviewing the existing code. Several changes or an unknown issue need diagnosis and a separate quote.
+- Websites: €100–180 for one responsive page using a familiar starting layout; €200–350 for a few pages in one style. Text and images are supplied by the client. Custom applications, custom design beyond the starting layout, content creation and extra languages need a separate quote.
+- Server setups: €40–80 for basic configuration; €100–180 for an extended setup of one game mode using existing plugins. Hosting, paid plugins, maps and custom code are separate.
+- Small launches using existing tools: a €200–300 **starting budget**, with a limited scope to agree. Selected components are requests to discuss, not a promise that an entire ecosystem is included. Selecting multiple components or a launcher requests an individual quote.
+- Uncertainty, databases/integrations/dashboards/payments and multiple versions/platforms/languages/servers require an individual quote. Any base range shown is explicitly a reference for basic work, not the quote for the selection. Starting prices never become fixed-price estimates.
+- Standalone launchers are individually quoted after discussing the existing base, platforms, accounts and update system.
 
-Prices live in `pricingServices` in `work.js`; calculator copy lives in `pricingTranslations`. Hosting, domains, paid services and ongoing maintenance are separate from development.
+Prices and per-service scope options live in `pricingServices` in `work.js`; calculator copy lives in `pricingTranslations`. Each scope has a label and optional explanation, plus either a budget range, a starting minimum or no automatic amount. A separate “not sure” option never assigns a price. Hosting, domains, paid services and ongoing maintenance are separate from development. New features and additional platforms are quoted before being added.
 
 “Use this estimate” attaches the current selection to the inquiry and selects its service. Further calculator changes update the attached estimate. Removing it, or deselecting its service in the form, detaches it. The visitor's own budget remains a separate, untouched field. The prepared message includes the chosen scope, components, additional requirements and estimate status.
 

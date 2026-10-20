@@ -260,177 +260,304 @@
     };
 
     const pricingTranslations = {
-      en: {
-        pricingScopeTitle: "How much should it do?",
-        pricingOne: "One small feature",
-        pricingOneHint: "A focused, simple task.",
-        pricingFew: "A few simple features",
-        pricingFewHint: "A small set of related actions.",
-        pricingFixTitle: "What needs changing?",
-        pricingFixOne: "One small fix",
-        pricingFixOneHint: "A focused change in an existing project.",
-        pricingFixFew: "A few small fixes",
-        pricingFixFewHint: "Several closely related adjustments.",
-        pricingFullTitle: "What kind of project?",
-        pricingFullOne: "A small launch using existing tools",
-        pricingFullOneHint: "Start with ready-made components and my existing work.",
-        pricingFullFew: "A new custom system",
-        pricingFullFewHint: "New architecture, complex features or a larger ecosystem.",
-        pricingOneOff: "One-off development",
-        pricingStarting: "Starting budget · scope to confirm",
-        pricingReview: "Scope to confirm",
-        pricingQuote: "Let’s discuss",
-        pricingModsNote: "A simple mod or plugin for one Minecraft version and platform.",
-        pricingBotNote: "A simple bot for one Discord server, with basic commands or automation.",
-        pricingFixNote: "Small, clearly defined changes in an existing project. I’ll check the code first.",
-        pricingFullNote: "An initial budget for a small launch using existing tools. The selected parts are a wishlist; we agree what fits before starting.",
-        pricingWebsiteNote: "Tell me about the pages, design and features. I’ll estimate your website after a short discussion.",
-        pricingServerNote: "Tell me about the server, plugins and setup you need. I’ll check the scope before quoting.",
-        pricingLauncherNote: "Platforms, accounts, updates and backend needs change the scope. Let’s work out your launcher first.",
-        pricingReviewNote: "This goes beyond the simple setup. I’ll check the details and give you a separate quote.",
-        pricingReference: "For reference, simple tasks: {range}.",
-        pricingFullReference: "Small launches start with a {range} budget; the complete scope needs a quote.",
-        pricingDiscuss: "Discuss this project",
-        pricingBrief: "Calculator selection",
-        pricingBriefScope: "Scope",
-        pricingBriefParts: "Parts to discuss",
-        pricingBriefExtras: "Additional requirements",
-        pricingBriefNote: "Preliminary guide only. Covers this calculator selection, not every item in the inquiry. Final scope and price to be agreed; hosting, domains, paid services and maintenance are separate.",
+      "en": {
+        "pricingScopeTitle": "Which scope sounds closest?",
+        "pricingOne": "Small mod",
+        "pricingFew": "Medium mod",
+        "pricingFixTitle": "What needs changing?",
+        "pricingFixOne": "Small, defined change",
+        "pricingFixOneHint": "One clear adjustment in existing code, after a code review.",
+        "pricingFixFew": "Several changes or an unknown issue",
+        "pricingFixFewHint": "I’ll check the code and diagnose the issue before quoting.",
+        "pricingFullTitle": "What kind of project?",
+        "pricingFullOne": "A small launch using existing tools",
+        "pricingFullOneHint": "€200–300 for an agreed selection of existing components, with a limited scope.",
+        "pricingFullFew": "A new custom system",
+        "pricingFullFewHint": "New architecture, custom features or a larger ecosystem. Individually quoted.",
+        "pricingOneOff": "One-off development",
+        "pricingStarting": "Starting budget · scope to confirm",
+        "pricingReview": "Scope to confirm",
+        "pricingQuote": "Let’s discuss",
+        "pricingModsNote": "For one agreed Minecraft version and platform. Scope and any required assets are agreed before starting.",
+        "pricingBotNote": "Basic commands or a small automation for one Discord server. Hosting and ongoing running costs are separate.",
+        "pricingFixNote": "One small, clearly defined change. I’ll review the existing code first; diagnosis or a larger repair needs a separate quote.",
+        "pricingFullNote": "€200–300 is a starting budget for a limited launch using existing components. The selected parts are requests to discuss; only the agreed scope is included, not a whole custom ecosystem.",
+        "pricingWebsiteNote": "One responsive page using a familiar starting layout. You supply the text and images; custom design, content creation, extra languages and backend features need a separate quote.",
+        "pricingServerNote": "Basic configuration of one server using existing plugins. Hosting, paid plugins, maps and custom development are separate.",
+        "pricingLauncherNote": "Launchers are individually quoted after discussing the existing base, target platforms, accounts and update system.",
+        "pricingReviewNote": "These requirements need a separate quote. I’ll review the scope and any existing code before confirming the price.",
+        "pricingReference": "Basic scope before additional requirements: {range}. This is not the quote for this selection.",
+        "pricingFullReference": "A limited launch starts with a {range} budget. The selected components need a separate scope and quote.",
+        "pricingDiscuss": "Discuss this project",
+        "pricingBrief": "Calculator selection",
+        "pricingBriefScope": "Scope",
+        "pricingBriefParts": "Parts to discuss",
+        "pricingBriefExtras": "Additional requirements",
+        "pricingBriefNote": "Preliminary guide only. Covers this calculator selection, not every item in the inquiry. Final scope and price to be agreed; hosting, domains, paid services and maintenance are separate.",
+        "typeMods": "Minecraft mods & plugins",
+        "pricingDescription": "Choose a service and the closest example. These are budget guides; we agree the exact work and final price before starting.",
+        "pricingComplex": "Large mod",
+        "pricingCustom": "Not sure — help me estimate",
+        "pricingCustomHint": "Describe the idea; I’ll help work out the scope.",
+        "pricingBotOne": "Simple Discord bot",
+        "pricingBotOneHint": "Basic commands or one small automation for one Discord server.",
+        "pricingBotFew": "Bot with integrations",
+        "pricingBotFewHint": "A database, external API or connected workflows. Individually quoted.",
+        "pricingWebsiteTitle": "What kind of website?",
+        "pricingWebsiteOne": "One-page website",
+        "pricingWebsiteOneHint": "A familiar starting layout, responsive build and your supplied text and images.",
+        "pricingWebsiteFew": "Small website",
+        "pricingWebsiteFewHint": "A few pages in one style, with supplied content and no complex backend.",
+        "pricingWebsiteComplex": "Custom web application",
+        "pricingWebsiteComplexHint": "Accounts, dashboards, payments or complex integrations. Individually quoted.",
+        "pricingServerTitle": "How much setup do you need?",
+        "pricingServerOne": "Basic server setup",
+        "pricingServerOneHint": "One server, existing plugins and a small agreed list of settings.",
+        "pricingServerFew": "Extended server setup",
+        "pricingServerFewHint": "One game mode: permissions, economy, menus and testing using existing plugins.",
+        "pricingServerComplex": "Custom systems or a server network",
+        "pricingServerComplexHint": "Custom code, linked servers or more extensive setup. Individually quoted.",
+        "pricingPlatforms": "Multiple game versions, platforms, languages or servers",
+        "pricingExtrasHint": "These require a separate quote. They are not included in the basic ranges.",
+        "pricingFrom": "From €{amount}",
+        "pricingIndividual": "Individual quote · starting price only",
+        "pricingOptionQuote": "Individual quote",
+        "pricingComplexNote": "€80 is a starting point, not a fixed price for a complete system. I’ll review the scope and quote the work individually.",
+        "pricingBotAdvancedNote": "Bots with databases, external APIs or connected workflows start from €80. The final price follows a review of your requirements; running costs are separate.",
+        "pricingWebsiteSmallNote": "A few pages in one visual style, with supplied text and images. Accounts, a complex backend and extra languages need a separate quote.",
+        "pricingServerExtendedNote": "One game mode using existing plugins: agreed permissions, economy and menus, checked together. Hosting, paid plugins, maps and custom code are separate.",
+        "pricingFootnote": "Final scope, price and timeline are agreed before starting. New features and extra platforms are quoted separately. Hosting, domains, paid services and ongoing maintenance are additional costs.",
+        "faqPriceAnswer": "Mods and plugins: small €20–30, medium €50–70, large from €80 with an individual quote. Small changes €15–25; simple Discord bots €30–50. Websites and server setups have their own ranges in the calculator. Launchers are individually quoted. Final scope and price are agreed before starting."
       },
-      ru: {
-        heroPricing: "Прикинуть стоимость",
-        typeFix: "Небольшие доработки",
-        pricingEyebrow: "Прикинем бюджет",
-        pricingTitleOne: "Твоя идея.",
-        pricingTitleTwo: "Понятный ориентир.",
-        pricingDescription: "Несколько ответов помогут понять порядок цен. Контакты оставлять не нужно. Итоговые объём и стоимость согласуем вместе.",
-        pricingChoices: "Параметры проекта для расчёта",
-        pricingService: "Что нужно сделать?",
-        pricingScopeTitle: "Какой объём задуман?",
-        pricingOne: "Одна небольшая функция",
-        pricingOneHint: "Простая задача с понятным результатом.",
-        pricingFew: "Несколько простых функций",
-        pricingFewHint: "Небольшой набор связанных действий.",
-        pricingFixTitle: "Что нужно доработать?",
-        pricingFixOne: "Одно небольшое исправление",
-        pricingFixOneHint: "Конкретная правка в существующем проекте.",
-        pricingFixFew: "Несколько небольших правок",
-        pricingFixFewHint: "Несколько тесно связанных изменений.",
-        pricingFullTitle: "Какой проект планируешь?",
-        pricingFullOne: "Небольшой запуск на готовой основе",
-        pricingFullOneHint: "Используем готовые компоненты и мои наработки.",
-        pricingFullFew: "Новая система с нуля",
-        pricingFullFewHint: "Новая архитектура, сложные функции или большая экосистема.",
-        pricingCustom: "Что-то большее / пока не знаю",
-        pricingCustomHint: "Разберёмся с объёмом вместе.",
-        pricingComponents: "Какие части ты рассматриваешь?",
-        pricingExtras: "Нужно что-то ещё?",
-        pricingIntegration: "База данных, внешний сервис, веб-панель или платежи",
-        pricingPlatforms: "Несколько версий игры, платформ или Discord-серверов",
-        pricingExtrasHint: "Для оценки таких задач сначала уточним детали.",
-        pricingEstimate: "Ориентировочный бюджет разработки",
-        pricingOneOff: "Разовая разработка",
-        pricingStarting: "Стартовый бюджет · объём уточним",
-        pricingReview: "Нужно уточнить объём",
-        pricingQuote: "Давай обсудим",
-        pricingModsNote: "Простой мод или плагин для одной версии Minecraft и одной платформы.",
-        pricingBotNote: "Простой бот для одного Discord-сервера: базовые команды или автоматизация.",
-        pricingFixNote: "Небольшие, чётко определённые доработки существующего проекта. Сначала посмотрю код.",
-        pricingFullNote: "Стартовый бюджет небольшого запуска на готовой основе. Выбранные части — пожелания: до начала согласуем, что войдёт в работу.",
-        pricingWebsiteNote: "Расскажи о страницах, дизайне и функциях. После короткого обсуждения оценю твой сайт.",
-        pricingServerNote: "Расскажи о сервере, плагинах и нужных настройках. Уточню объём и назову стоимость.",
-        pricingLauncherNote: "Платформы, аккаунты, обновления и backend влияют на объём. Сначала разберём твой лаунчер.",
-        pricingReviewNote: "Это выходит за рамки простой задачи. Уточню детали и предложу отдельную стоимость.",
-        pricingReference: "Для ориентира: простые задачи — {range}.",
-        pricingFullReference: "Для небольшого запуска ориентир — {range}; полную стоимость определим по составу.",
-        pricingIncluded: "В согласованную работу входят",
-        pricingIncludedBuild: "Разработка и проверка",
-        pricingIncludedFiles: "Исходники и инструкция запуска",
-        pricingUse: "Обсудить этот вариант",
-        pricingDiscuss: "Обсудить проект",
-        pricingFootnote: "Предварительный ориентир. Объём и итоговую стоимость согласуем до начала. Хостинг, домены, платные сервисы и дальнейшая поддержка — отдельно.",
-        pricingAttached: "Расчёт добавлен к сообщению",
-        pricingRemove: "Убрать",
-        pricingBrief: "Выбор в калькуляторе",
-        pricingBriefScope: "Объём",
-        pricingBriefParts: "Части для обсуждения",
-        pricingBriefExtras: "Дополнительные требования",
-        pricingBriefNote: "Предварительный ориентир только для выбранного варианта в калькуляторе, а не всей заявки. Объём и итоговую цену ещё согласуем; хостинг, домены, платные сервисы и поддержка — отдельно.",
-        faqPriceAnswer: "Начальный бюджет можно прикинуть в калькуляторе выше. Для простых модов, плагинов и ботов ориентир — 30–50 €, для небольших доработок — 15–25 €. Итоговая стоимость зависит от согласованного объёма и нужных интеграций.",
+      "ru": {
+        "heroPricing": "Прикинуть стоимость",
+        "typeFix": "Небольшие доработки",
+        "pricingEyebrow": "Прикинем бюджет",
+        "pricingTitleOne": "Твоя идея.",
+        "pricingTitleTwo": "Понятный ориентир.",
+        "pricingDescription": "Выбери услугу и ближайший пример. Это ориентиры бюджета: точный объём и итоговую цену согласуем до начала работы.",
+        "pricingChoices": "Параметры проекта для расчёта",
+        "pricingService": "Что нужно сделать?",
+        "pricingScopeTitle": "Какой вариант ближе к твоей идее?",
+        "pricingOne": "Небольшой мод",
+        "pricingFew": "Средний мод",
+        "pricingFixTitle": "Что нужно доработать?",
+        "pricingFixOne": "Небольшая понятная правка",
+        "pricingFixOneHint": "Одно конкретное изменение в существующем коде, после его проверки.",
+        "pricingFixFew": "Несколько правок или неизвестная ошибка",
+        "pricingFixFewHint": "Сначала посмотрю код и разберусь с причиной, затем назову цену.",
+        "pricingFullTitle": "Какой проект планируешь?",
+        "pricingFullOne": "Небольшой запуск на готовой основе",
+        "pricingFullOneHint": "200–300 € за согласованный набор готовых компонентов с ограниченным объёмом работ.",
+        "pricingFullFew": "Новая система с нуля",
+        "pricingFullFewHint": "Новая архитектура, свои функции или большая экосистема. Индивидуальная оценка.",
+        "pricingCustom": "Не знаю — помоги оценить",
+        "pricingCustomHint": "Опиши идею — помогу определить объём.",
+        "pricingComponents": "Какие части ты рассматриваешь?",
+        "pricingExtras": "Нужно что-то ещё?",
+        "pricingIntegration": "База данных, внешний сервис, веб-панель или платежи",
+        "pricingPlatforms": "Несколько версий игры, платформ, языков или серверов",
+        "pricingExtrasHint": "Для этого нужна отдельная оценка. Дополнительные требования не входят в базовые диапазоны.",
+        "pricingEstimate": "Ориентировочный бюджет разработки",
+        "pricingOneOff": "Разовая разработка",
+        "pricingStarting": "Стартовый бюджет · объём уточним",
+        "pricingReview": "Нужно уточнить объём",
+        "pricingQuote": "Давай обсудим",
+        "pricingModsNote": "Для одной согласованной версии Minecraft и платформы. Объём и нужные материалы определим до начала работы.",
+        "pricingBotNote": "Базовые команды или небольшая автоматизация для одного Discord-сервера. Хостинг и постоянные расходы — отдельно.",
+        "pricingFixNote": "Одна небольшая, чётко определённая правка. Сначала посмотрю код; диагностику или большой ремонт оценим отдельно.",
+        "pricingFullNote": "200–300 € — стартовый бюджет ограниченного запуска на готовых компонентах. Выбранные части — пожелания для обсуждения; в цену входит только согласованный объём, а не целая экосистема с нуля.",
+        "pricingWebsiteNote": "Одна адаптивная страница на знакомой основе. Тексты и изображения предоставляешь ты; свой дизайн, создание контента, дополнительные языки и backend оценим отдельно.",
+        "pricingServerNote": "Базовая настройка одного сервера на готовых плагинах. Хостинг, платные плагины, карты и своя разработка — отдельно.",
+        "pricingLauncherNote": "Лаунчеры оцениваю индивидуально: сначала обсудим готовую основу, платформы, аккаунты и систему обновлений.",
+        "pricingReviewNote": "Для этих требований нужна отдельная оценка. Разберу объём и существующий код, если он есть, затем подтвержу цену.",
+        "pricingReference": "Базовый объём без дополнительных требований: {range}. Это не стоимость выбранного варианта.",
+        "pricingFullReference": "Ограниченный запуск начинается с бюджета {range}. Выбранные компоненты требуют отдельного согласования объёма и цены.",
+        "pricingIncluded": "В согласованную работу входят",
+        "pricingIncludedBuild": "Разработка и проверка",
+        "pricingIncludedFiles": "Исходники и инструкция запуска",
+        "pricingUse": "Обсудить этот вариант",
+        "pricingDiscuss": "Обсудить проект",
+        "pricingFootnote": "Объём, итоговую цену и сроки согласуем до начала. Новые функции и дополнительные платформы оценим отдельно. Хостинг, домены, платные сервисы и дальнейшая поддержка — дополнительные расходы.",
+        "pricingAttached": "Расчёт добавлен к сообщению",
+        "pricingRemove": "Убрать",
+        "pricingBrief": "Выбор в калькуляторе",
+        "pricingBriefScope": "Объём",
+        "pricingBriefParts": "Части для обсуждения",
+        "pricingBriefExtras": "Дополнительные требования",
+        "pricingBriefNote": "Предварительный ориентир только для выбранного варианта в калькуляторе, а не всей заявки. Объём и итоговую цену ещё согласуем; хостинг, домены, платные сервисы и поддержка — отдельно.",
+        "faqPriceAnswer": "Моды и плагины: небольшие — 20–30 €, средние — 50–70 €, большие — от 80 € с индивидуальной оценкой. Небольшие правки — 15–25 €, простые Discord-боты — 30–50 €. Для сайтов и настройки серверов есть свои диапазоны в калькуляторе. Лаунчеры оцениваю индивидуально. Объём и итоговую цену согласуем до начала.",
+        "typeMods": "Minecraft — моды и плагины",
+        "pricingComplex": "Большой мод",
+        "pricingBotOne": "Простой Discord-бот",
+        "pricingBotOneHint": "Базовые команды или небольшая автоматизация для одного Discord-сервера.",
+        "pricingBotFew": "Бот с интеграциями",
+        "pricingBotFewHint": "База данных, внешний API или связанные сценарии. Индивидуальная оценка.",
+        "pricingWebsiteTitle": "Какой сайт нужен?",
+        "pricingWebsiteOne": "Одностраничный сайт",
+        "pricingWebsiteOneHint": "На знакомой основе, с адаптацией для телефона и твоими текстами и изображениями.",
+        "pricingWebsiteFew": "Небольшой сайт",
+        "pricingWebsiteFewHint": "Несколько страниц в одном стиле, с готовыми материалами и без сложного backend.",
+        "pricingWebsiteComplex": "Веб-приложение на заказ",
+        "pricingWebsiteComplexHint": "Аккаунты, панели управления, платежи или сложные интеграции. Индивидуальная оценка.",
+        "pricingServerTitle": "Какой объём настройки нужен?",
+        "pricingServerOne": "Базовая настройка сервера",
+        "pricingServerOneHint": "Один сервер, готовые плагины и небольшой согласованный список настроек.",
+        "pricingServerFew": "Расширенная настройка",
+        "pricingServerFewHint": "Один режим: права, экономика, меню и проверка на готовых плагинах.",
+        "pricingServerComplex": "Свои системы или сеть серверов",
+        "pricingServerComplexHint": "Свой код, связанные серверы или большой объём настройки. Индивидуальная оценка.",
+        "pricingFrom": "От €{amount}",
+        "pricingIndividual": "Индивидуальная оценка · только стартовая цена",
+        "pricingOptionQuote": "Индивидуально",
+        "pricingComplexNote": "80 € — стартовый ориентир, а не фиксированная цена целой системы. Разберу объём и назову индивидуальную стоимость.",
+        "pricingBotAdvancedNote": "Боты с базой данных, внешним API или связанными сценариями — от 80 €. Итоговую цену определю по требованиям; постоянные расходы — отдельно.",
+        "pricingWebsiteSmallNote": "Несколько страниц в одном стиле, с готовыми текстами и изображениями. Аккаунты, сложный backend и дополнительные языки оценим отдельно.",
+        "pricingServerExtendedNote": "Один режим на готовых плагинах: согласованные права, экономика и меню с общей проверкой. Хостинг, платные плагины, карты и свой код — отдельно."
       },
-      lt: {
-        heroPricing: "Įvertinti biudžetą",
-        typeFix: "Nedideli pakeitimai",
-        pricingEyebrow: "Trumpas biudžeto įvertinimas",
-        pricingTitleOne: "Tavo idėja.",
-        pricingTitleTwo: "Pradinė kaina.",
-        pricingDescription: "Keli pasirinkimai padės suprasti biudžetą. Kontaktų palikti nereikia. Galutinę apimtį ir kainą suderinsime kartu.",
-        pricingChoices: "Projekto duomenys kainai įvertinti",
-        pricingService: "Ką reikia sukurti?",
-        pricingScopeTitle: "Kokia darbų apimtis?",
-        pricingOne: "Viena nedidelė funkcija",
-        pricingOneHint: "Paprasta užduotis su aiškiu rezultatu.",
-        pricingFew: "Kelios paprastos funkcijos",
-        pricingFewHint: "Nedidelis susijusių veiksmų rinkinys.",
-        pricingFixTitle: "Ką reikia pakeisti?",
-        pricingFixOne: "Vienas nedidelis pataisymas",
-        pricingFixOneHint: "Konkretus esamo projekto pakeitimas.",
-        pricingFixFew: "Keli nedideli pataisymai",
-        pricingFixFewHint: "Keli glaudžiai susiję pakeitimai.",
-        pricingFullTitle: "Kokį projektą planuoji?",
-        pricingFullOne: "Nedidelis startas su esamais įrankiais",
-        pricingFullOneHint: "Naudojame paruoštus komponentus ir mano turimus sprendimus.",
-        pricingFullFew: "Nauja individuali sistema",
-        pricingFullFewHint: "Nauja architektūra, sudėtingos funkcijos ar didesnė ekosistema.",
-        pricingCustom: "Didesnis projektas / dar nežinau",
-        pricingCustomHint: "Apimtį išsiaiškinsime kartu.",
-        pricingComponents: "Kokias dalis svarstai?",
-        pricingExtras: "Ar reikės ko nors papildomai?",
-        pricingIntegration: "Duomenų bazė, išorinė paslauga, valdymo skydas ar mokėjimai",
-        pricingPlatforms: "Kelios žaidimo versijos, platformos ar Discord serveriai",
-        pricingExtrasHint: "Prieš įvertinant tokias užduotis reikia aptarti detales.",
-        pricingEstimate: "Preliminarus kūrimo biudžetas",
-        pricingOneOff: "Vienkartinis kūrimas",
-        pricingStarting: "Pradinis biudžetas · apimtį suderinsime",
-        pricingReview: "Reikia patikslinti apimtį",
-        pricingQuote: "Aptarkime",
-        pricingModsNote: "Paprastas modas ar papildinys vienai Minecraft versijai ir platformai.",
-        pricingBotNote: "Paprastas botas vienam Discord serveriui: pagrindinės komandos ar automatizavimas.",
-        pricingFixNote: "Nedideli, aiškiai apibrėžti esamo projekto pakeitimai. Pirmiausia peržiūrėsiu kodą.",
-        pricingFullNote: "Pradinis nedidelio projekto biudžetas naudojant esamus įrankius. Pasirinktos dalys yra pageidavimai; prieš pradėdami sutarsime, kas įeina į darbą.",
-        pricingWebsiteNote: "Papasakok apie puslapius, dizainą ir funkcijas. Po trumpo pokalbio įvertinsiu tavo svetainę.",
-        pricingServerNote: "Papasakok apie serverį, papildinius ir nustatymus. Patikslinsiu apimtį ir pateiksiu kainą.",
-        pricingLauncherNote: "Platformos, paskyros, atnaujinimai ir serverio dalis keičia apimtį. Pirmiausia aptarkime paleidyklę.",
-        pricingReviewNote: "Tai viršija paprastos užduoties apimtį. Aptarsiu detales ir pateiksiu atskirą pasiūlymą.",
-        pricingReference: "Orientyrui: paprastos užduotys — {range}.",
-        pricingFullReference: "Nedidelio starto biudžeto orientyras — {range}; visą kainą lems suderinta apimtis.",
-        pricingIncluded: "Į suderintą darbą įeina",
-        pricingIncludedBuild: "Kūrimas ir patikra",
-        pricingIncludedFiles: "Išeities failai ir paleidimo instrukcija",
-        pricingUse: "Aptarti šį variantą",
-        pricingDiscuss: "Aptarti projektą",
-        pricingFootnote: "Preliminarus orientyras. Apimtį ir galutinę kainą suderinsime prieš pradėdami. Hostingas, domenai, mokamos paslaugos ir tolesnė priežiūra — atskirai.",
-        pricingAttached: "Įvertinimas pridėtas prie žinutės",
-        pricingRemove: "Pašalinti",
-        pricingBrief: "Skaičiuoklės pasirinkimas",
-        pricingBriefScope: "Apimtis",
-        pricingBriefParts: "Dalys aptarimui",
-        pricingBriefExtras: "Papildomi reikalavimai",
-        pricingBriefNote: "Preliminarus orientyras tik šiam skaičiuoklės pasirinkimui, ne visai užklausai. Apimtį ir galutinę kainą dar suderinsime; hostingas, domenai, mokamos paslaugos ir priežiūra — atskirai.",
-        faqPriceAnswer: "Pradinį biudžetą gali įvertinti skaičiuoklėje aukščiau. Paprastų modų, papildinių ir botų orientyras — 30–50 €, nedidelių pakeitimų — 15–25 €. Galutinė kaina priklauso nuo suderintos apimties ir integracijų.",
-      },
+      "lt": {
+        "heroPricing": "Įvertinti biudžetą",
+        "typeFix": "Nedideli pakeitimai",
+        "pricingEyebrow": "Trumpas biudžeto įvertinimas",
+        "pricingTitleOne": "Tavo idėja.",
+        "pricingTitleTwo": "Pradinė kaina.",
+        "pricingDescription": "Pasirink paslaugą ir artimiausią pavyzdį. Tai biudžeto orientyrai; tikslią apimtį ir galutinę kainą suderinsime prieš pradėdami.",
+        "pricingChoices": "Projekto duomenys kainai įvertinti",
+        "pricingService": "Ką reikia sukurti?",
+        "pricingScopeTitle": "Kuris variantas artimiausias tavo idėjai?",
+        "pricingOne": "Nedidelis modas",
+        "pricingFew": "Vidutinio dydžio modas",
+        "pricingFixTitle": "Ką reikia pakeisti?",
+        "pricingFixOne": "Nedidelis aiškus pakeitimas",
+        "pricingFixOneHint": "Vienas konkretus esamo kodo pakeitimas, pirmiausia jį peržiūrėjus.",
+        "pricingFixFew": "Keli pakeitimai ar nežinoma klaida",
+        "pricingFixFewHint": "Pirmiausia peržiūrėsiu kodą ir nustatysiu priežastį, tada pateiksiu kainą.",
+        "pricingFullTitle": "Kokį projektą planuoji?",
+        "pricingFullOne": "Nedidelis startas su esamais įrankiais",
+        "pricingFullOneHint": "200–300 € už suderintą esamų komponentų rinkinį su ribota darbų apimtimi.",
+        "pricingFullFew": "Nauja individuali sistema",
+        "pricingFullFewHint": "Nauja architektūra, individualios funkcijos ar didesnė ekosistema. Vertinama individualiai.",
+        "pricingCustom": "Dar nežinau — padėk įvertinti",
+        "pricingCustomHint": "Aprašyk idėją; padėsiu nustatyti darbų apimtį.",
+        "pricingComponents": "Kokias dalis svarstai?",
+        "pricingExtras": "Ar reikės ko nors papildomai?",
+        "pricingIntegration": "Duomenų bazė, išorinė paslauga, valdymo skydas ar mokėjimai",
+        "pricingPlatforms": "Kelios žaidimo versijos, platformos, kalbos ar serveriai",
+        "pricingExtrasHint": "Tam reikia atskiro įvertinimo. Papildomi reikalavimai neįeina į bazinius kainų intervalus.",
+        "pricingEstimate": "Preliminarus kūrimo biudžetas",
+        "pricingOneOff": "Vienkartinis kūrimas",
+        "pricingStarting": "Pradinis biudžetas · apimtį suderinsime",
+        "pricingReview": "Reikia patikslinti apimtį",
+        "pricingQuote": "Aptarkime",
+        "pricingModsNote": "Vienai suderintai Minecraft versijai ir platformai. Apimtį ir reikiamą medžiagą sutarsime prieš pradėdami.",
+        "pricingBotNote": "Pagrindinės komandos ar nedidelis automatizavimas vienam Discord serveriui. Hostingas ir nuolatinės veikimo išlaidos — atskirai.",
+        "pricingFixNote": "Vienas nedidelis, aiškiai apibrėžtas pakeitimas. Pirmiausia peržiūrėsiu kodą; diagnostiką ar didesnį taisymą įvertinsime atskirai.",
+        "pricingFullNote": "200–300 € yra pradinis ribotos apimties projekto biudžetas naudojant esamus komponentus. Pasirinktos dalys — pageidavimai aptarimui; į kainą įeina tik suderinta apimtis, ne visa individuali ekosistema.",
+        "pricingWebsiteNote": "Vienas telefonui pritaikytas puslapis naudojant esamą pagrindą. Tekstus ir vaizdus pateiki tu; individualų dizainą, turinio kūrimą, papildomas kalbas ir serverio funkcijas įvertinsime atskirai.",
+        "pricingServerNote": "Bazinis vieno serverio konfigūravimas su esamais papildiniais. Hostingas, mokami papildiniai, žemėlapiai ir individualus kūrimas — atskirai.",
+        "pricingLauncherNote": "Paleidykles įvertinu individualiai, aptarę esamą pagrindą, platformas, paskyras ir atnaujinimų sistemą.",
+        "pricingReviewNote": "Šiems reikalavimams reikia atskiro pasiūlymo. Peržiūrėsiu apimtį ir esamą kodą, jei jis yra, tada patvirtinsiu kainą.",
+        "pricingReference": "Bazinė apimtis be papildomų reikalavimų: {range}. Tai nėra šio pasirinkimo kaina.",
+        "pricingFullReference": "Riboto starto biudžetas prasideda nuo {range}. Pasirinktiems komponentams reikia atskirai suderinti apimtį ir kainą.",
+        "pricingIncluded": "Į suderintą darbą įeina",
+        "pricingIncludedBuild": "Kūrimas ir patikra",
+        "pricingIncludedFiles": "Išeities failai ir paleidimo instrukcija",
+        "pricingUse": "Aptarti šį variantą",
+        "pricingDiscuss": "Aptarti projektą",
+        "pricingFootnote": "Apimtį, galutinę kainą ir terminus suderinsime prieš pradėdami. Naujas funkcijas ir papildomas platformas įvertinsime atskirai. Hostingas, domenai, mokamos paslaugos ir tolesnė priežiūra kainuoja papildomai.",
+        "pricingAttached": "Įvertinimas pridėtas prie žinutės",
+        "pricingRemove": "Pašalinti",
+        "pricingBrief": "Skaičiuoklės pasirinkimas",
+        "pricingBriefScope": "Apimtis",
+        "pricingBriefParts": "Dalys aptarimui",
+        "pricingBriefExtras": "Papildomi reikalavimai",
+        "pricingBriefNote": "Preliminarus orientyras tik šiam skaičiuoklės pasirinkimui, ne visai užklausai. Apimtį ir galutinę kainą dar suderinsime; hostingas, domenai, mokamos paslaugos ir priežiūra — atskirai.",
+        "faqPriceAnswer": "Modai ir papildiniai: nedideli — 20–30 €, vidutiniai — 50–70 €, dideli — nuo 80 € su individualiu įvertinimu. Nedideli pakeitimai — 15–25 €, paprasti Discord botai — 30–50 €. Svetainių ir serverių paruošimo intervalai pateikti skaičiuoklėje. Paleidyklės vertinamos individualiai. Apimtį ir galutinę kainą suderinsime prieš pradėdami.",
+        "typeMods": "Minecraft modai ir papildiniai",
+        "pricingComplex": "Didelis modas",
+        "pricingBotOne": "Paprastas Discord botas",
+        "pricingBotOneHint": "Pagrindinės komandos ar nedidelis automatizavimas vienam Discord serveriui.",
+        "pricingBotFew": "Botas su integracijomis",
+        "pricingBotFewHint": "Duomenų bazė, išorinis API ar susiję procesai. Vertinama individualiai.",
+        "pricingWebsiteTitle": "Kokios svetainės reikia?",
+        "pricingWebsiteOne": "Vieno puslapio svetainė",
+        "pricingWebsiteOneHint": "Esamas pagrindas, pritaikymas telefonui ir tavo pateikti tekstai bei vaizdai.",
+        "pricingWebsiteFew": "Nedidelė svetainė",
+        "pricingWebsiteFewHint": "Keli vieno stiliaus puslapiai su paruoštu turiniu, be sudėtingos serverio dalies.",
+        "pricingWebsiteComplex": "Individuali žiniatinklio programa",
+        "pricingWebsiteComplexHint": "Paskyros, valdymo skydai, mokėjimai ar sudėtingos integracijos. Vertinama individualiai.",
+        "pricingServerTitle": "Kokios konfigūravimo apimties reikia?",
+        "pricingServerOne": "Bazinis serverio paruošimas",
+        "pricingServerOneHint": "Vienas serveris, esami papildiniai ir nedidelis suderintas nustatymų sąrašas.",
+        "pricingServerFew": "Išplėstinis serverio paruošimas",
+        "pricingServerFewHint": "Vienas žaidimo režimas: teisės, ekonomika, meniu ir patikra su esamais papildiniais.",
+        "pricingServerComplex": "Individualios sistemos ar serverių tinklas",
+        "pricingServerComplexHint": "Individualus kodas, susieti serveriai ar didesnė apimtis. Vertinama individualiai.",
+        "pricingFrom": "Nuo €{amount}",
+        "pricingIndividual": "Individualus pasiūlymas · tik pradinė kaina",
+        "pricingOptionQuote": "Individualiai",
+        "pricingComplexNote": "80 € yra pradinis orientyras, ne fiksuota visos sistemos kaina. Peržiūrėsiu apimtį ir pateiksiu individualų pasiūlymą.",
+        "pricingBotAdvancedNote": "Botai su duomenų baze, išoriniu API ar susijusiais procesais — nuo 80 €. Galutinę kainą lems reikalavimai; veikimo išlaidos — atskirai.",
+        "pricingWebsiteSmallNote": "Keli vieno stiliaus puslapiai su pateiktais tekstais ir vaizdais. Paskyras, sudėtingą serverio dalį ir papildomas kalbas įvertinsime atskirai.",
+        "pricingServerExtendedNote": "Vienas režimas su esamais papildiniais: suderintos teisės, ekonomika ir meniu su bendra patikra. Hostingas, mokami papildiniai, žemėlapiai ir individualus kodas — atskirai."
+      }
     };
-    pricingTranslations.en.faqPriceAnswer = "Use the calculator above for a starting budget. Simple mods, plugins and bots are typically €30–50; small changes are €15–25. The final price depends on the agreed scope and integrations.";
     for (const [locale, copy] of Object.entries(pricingTranslations)) Object.assign(translations[locale], copy);
 
-    // Only agreed price bands are automatic. Unpriced or complex work needs a quote.
+    // Ranges are budget guides; minimums always require an individual quote.
+    const customScope = { label: "pricingCustom", hint: "pricingCustomHint" };
     const pricingServices = {
-      mods: { one: [30, 40], few: [40, 50], reference: [30, 50], note: "pricingModsNote" },
-      bot: { one: [30, 40], few: [40, 50], reference: [30, 50], note: "pricingBotNote" },
-      fix: { one: [15, 20], few: [20, 25], reference: [15, 25], note: "pricingFixNote" },
-      full: { one: [200, 300], reference: [200, 300], note: "pricingFullNote" },
-      website: { note: "pricingWebsiteNote" },
-      server: { note: "pricingServerNote" },
+      mods: {
+        title: "pricingScopeTitle", note: "pricingModsNote",
+        scopes: {
+          one: { label: "pricingOne", range: [20, 30] },
+          few: { label: "pricingFew", range: [50, 70] },
+          complex: { label: "pricingComplex", minimum: 80, note: "pricingComplexNote" },
+          custom: customScope,
+        },
+      },
+      bot: {
+        title: "pricingScopeTitle", note: "pricingBotNote",
+        scopes: {
+          one: { label: "pricingBotOne", hint: "pricingBotOneHint", range: [30, 50] },
+          few: { label: "pricingBotFew", hint: "pricingBotFewHint", minimum: 80, note: "pricingBotAdvancedNote" },
+          custom: customScope,
+        },
+      },
+      fix: {
+        title: "pricingFixTitle", note: "pricingFixNote",
+        scopes: {
+          one: { label: "pricingFixOne", hint: "pricingFixOneHint", range: [15, 25] },
+          few: { label: "pricingFixFew", hint: "pricingFixFewHint", note: "pricingReviewNote" },
+          custom: customScope,
+        },
+      },
+      full: {
+        title: "pricingFullTitle", note: "pricingFullNote",
+        scopes: {
+          one: { label: "pricingFullOne", hint: "pricingFullOneHint", range: [200, 300] },
+          few: { label: "pricingFullFew", hint: "pricingFullFewHint", note: "pricingReviewNote" },
+          custom: customScope,
+        },
+      },
+      website: {
+        title: "pricingWebsiteTitle", note: "pricingWebsiteNote",
+        scopes: {
+          one: { label: "pricingWebsiteOne", hint: "pricingWebsiteOneHint", range: [100, 180] },
+          few: { label: "pricingWebsiteFew", hint: "pricingWebsiteFewHint", range: [200, 350], note: "pricingWebsiteSmallNote" },
+          complex: { label: "pricingWebsiteComplex", hint: "pricingWebsiteComplexHint", note: "pricingReviewNote" },
+          custom: customScope,
+        },
+      },
+      server: {
+        title: "pricingServerTitle", note: "pricingServerNote",
+        scopes: {
+          one: { label: "pricingServerOne", hint: "pricingServerOneHint", range: [40, 80] },
+          few: { label: "pricingServerFew", hint: "pricingServerFewHint", range: [100, 180], note: "pricingServerExtendedNote" },
+          complex: { label: "pricingServerComplex", hint: "pricingServerComplexHint", note: "pricingReviewNote" },
+          custom: customScope,
+        },
+      },
       launcher: { note: "pricingLauncherNote" },
     };
     const serviceInput = document.querySelector("#estimate-service");
@@ -446,16 +573,18 @@
     const t = (key) => translations[language][key] ?? translations.en[key] ?? key;
 
     const formatRange = ([low, high]) => `€${low}–${high}`;
-    function scopeKeys(service) {
-      if (service === "fix") return ["pricingFixTitle", "pricingFixOne", "pricingFixOneHint", "pricingFixFew", "pricingFixFewHint"];
-      if (service === "full") return ["pricingFullTitle", "pricingFullOne", "pricingFullOneHint", "pricingFullFew", "pricingFullFewHint"];
-      return ["pricingScopeTitle", "pricingOne", "pricingOneHint", "pricingFew", "pricingFewHint"];
+    function formatEstimate({ range, minimum }) {
+      if (range) return formatRange(range);
+      if (minimum) return t("pricingFrom").replace("{amount}", minimum);
+      return t("pricingQuote");
     }
     function estimateValue() {
-      return currentEstimate.range ? formatRange(currentEstimate.range) : t("pricingQuote");
+      return formatEstimate(currentEstimate);
     }
     function estimateBadge() {
-      return t(currentEstimate.range ? (currentEstimate.service === "full" ? "pricingStarting" : "pricingOneOff") : "pricingReview");
+      if (currentEstimate.minimum) return t("pricingIndividual");
+      if (currentEstimate.range) return t(currentEstimate.service === "full" ? "pricingStarting" : "pricingOneOff");
+      return t("pricingReview");
     }
     function updateAttachedEstimate() {
       document.querySelector("#brief-estimate").hidden = !attachedEstimate.value;
@@ -466,35 +595,50 @@
       if (!Object.hasOwn(pricingServices, serviceInput.value)) serviceInput.value = "mods";
       const service = serviceInput.value;
       const config = pricingServices[service];
-      const scope = scopeInputs.find((input) => input.checked)?.value || "one";
+      let scope = scopeInputs.find((input) => input.checked)?.value || "one";
+      if (config.scopes && !config.scopes[scope]) scope = "one";
+      const selection = config.scopes?.[scope];
       const parts = service === "full" ? partInputs.filter((input) => input.checked).map((input) => input.value) : [];
       const extras = [];
       if (integrationInput.checked) extras.push("pricingIntegration");
       if (platformsInput.checked) extras.push("pricingPlatforms");
-      const range = extras.length || parts.includes("launcher") ? null : config[scope] || null;
-      currentEstimate = { service, scope, parts, extras, range, reference: config.reference };
-      document.querySelector("#estimate-scope").hidden = !config.reference;
+      const additionalReview = extras.length > 0 || parts.includes("launcher") || parts.length > 1;
+      const range = additionalReview ? null : selection?.range || null;
+      const minimum = additionalReview ? null : selection?.minimum || null;
+      const reference = additionalReview ? selection?.range || null : null;
+      currentEstimate = { service, scope, parts, extras, range, minimum, reference, selection };
+      document.querySelector("#estimate-scope").hidden = !config.scopes;
       document.querySelector("#estimate-components").hidden = service !== "full";
-      const scopeIds = ["title", "one-label", "one-hint", "few-label", "few-hint"];
-      scopeKeys(service).forEach((key, index) => { document.querySelector(`#estimate-scope-${scopeIds[index]}`).textContent = t(key); });
+      if (config.title) document.querySelector("#estimate-scope-title").textContent = t(config.title);
+      for (const input of scopeInputs) {
+        const option = config.scopes?.[input.value];
+        input.closest("label").hidden = !option;
+        input.disabled = !option;
+        input.checked = input.value === scope;
+        if (!option) continue;
+        document.querySelector(`#estimate-scope-${input.value}-label`).textContent = t(option.label);
+        const hint = document.querySelector(`#estimate-scope-${input.value}-hint`);
+        hint.textContent = option.hint ? t(option.hint) : "";
+        hint.hidden = !option.hint;
+        document.querySelector(`#estimate-scope-${input.value}-price`).textContent = option.range || option.minimum
+          ? formatEstimate(option) : input.value === "custom" ? "" : t("pricingOptionQuote");
+      }
       document.querySelector("#estimate-price").textContent = estimateValue();
       document.querySelector("#estimate-badge").textContent = estimateBadge();
-      document.querySelector(".pricing-result").dataset.review = String(!range);
-      document.querySelector("#estimate-summary").textContent = t(!range && config.reference ? "pricingReviewNote" : config.note);
-      const reference = document.querySelector("#estimate-reference");
-      reference.hidden = Boolean(range || !config.reference);
-      reference.textContent = config.reference
-        ? t(service === "full" ? "pricingFullReference" : "pricingReference").replace("{range}", formatRange(config.reference)) : "";
+      document.querySelector(".pricing-result").dataset.review = String(!range && !minimum);
+      const note = additionalReview || (config.scopes && scope === "custom") ? "pricingReviewNote" : selection?.note || config.note;
+      document.querySelector("#estimate-summary").textContent = t(note);
+      const referenceElement = document.querySelector("#estimate-reference");
+      referenceElement.hidden = !reference;
+      referenceElement.textContent = reference
+        ? t(service === "full" ? "pricingFullReference" : "pricingReference").replace("{range}", formatRange(reference)) : "";
       document.querySelector("#estimate-cta-label").textContent = t(range ? "pricingUse" : "pricingDiscuss");
       updateAttachedEstimate();
     }
     function calculatorBrief() {
-      const { service, scope, parts, extras, reference } = currentEstimate;
+      const { service, parts, extras, reference, selection } = currentEstimate;
       const lines = [`${t("pricingBrief")}: ${t(typeKeys[service])}`];
-      if (reference) {
-        const keys = scopeKeys(service);
-        lines.push(`${t("pricingBriefScope")}: ${t(scope === "custom" ? "pricingCustom" : keys[scope === "one" ? 1 : 3])}`);
-      }
+      if (selection) lines.push(`${t("pricingBriefScope")}: ${t(selection.label)}`);
       if (parts.length) lines.push(`${t("pricingBriefParts")}: ${parts.map((part) => t(typeKeys[part])).join(", ")}`);
       if (extras.length) lines.push(`${t("pricingBriefExtras")}: ${extras.map(t).join("; ")}`);
       lines.push(`${t("pricingEstimate")}: ${estimateValue()} (${estimateBadge()})`);

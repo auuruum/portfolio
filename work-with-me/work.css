@@ -2596,6 +2596,21 @@ body {
   outline-offset: 3px;
 }
 .pricing-scope-options label:hover > span { border-color: var(--accent); }
+.pricing-option-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 12px;
+}
+.pricing-option-heading strong { flex: 1 1 150px; }
+.pricing-option-price {
+  color: var(--accent);
+  font-size: 11px;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
 .pricing-scope-options strong {
   display: block;
   font-size: 12px;
